@@ -1,12 +1,17 @@
 # Unsplash
 
-Unsplash API in Elixir. Examples.
+Unsplash API in Elixir.
 
-  Unsplash.photos
+
+## To Use
+
+  ```Unsplash.photos```
 
 or
 
-  Unsplash.categories
+  ```Unsplash.categories```
+
+more examples coming soon.
 
 ## Todo
 
