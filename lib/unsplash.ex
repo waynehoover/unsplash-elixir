@@ -54,7 +54,14 @@ defmodule Unsplash do
     params = %{w: q[:w], h: q[:h], rect: q[:rect]}
     |> Enum.filter(fn {k,v} -> v end)
     |> URI.encode_query
+    #params = get_query_string(q, [:w, :h, :rect])
     ResultStream.new("/photos/#{id}?#{params}")
+  end
+
+  defp get_query_string(options, params) do
+    params |> Enum.map fn (param) ->
+      [param => options[param]]
+    end |> Enum.into %{}
   end
 
 #POST /photos
