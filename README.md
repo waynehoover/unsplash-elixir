@@ -5,11 +5,11 @@ Unsplash API in Elixir.
 
 ## To Use
 
-  ```Unsplash.photos```
+`Unsplash.photos`
 
 or
 
-  ```Unsplash.categories```
+`Unsplash.categories`
 
 more examples coming soon.
 
