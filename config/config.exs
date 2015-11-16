@@ -2,9 +2,9 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-config :unsplash,
-  application_id: "cac4211848e811f9eef79a3a374d6c3d0ed53a3111e3bcb3adc51f85ef7ecdbb",
-  application_secret: "d0f9bac913fe1216c56d553e60af1aec4123dd6782d45e36af4dfe4993d490c7"
+# config :unsplash,
+#   application_id: "application_id_goes_here",
+#   application_secret: "application_secret_goes_here"
 
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
@@ -31,4 +31,4 @@ config :unsplash,
 # Configuration from the imported file will override the ones defined
 # here (which is why it is important to import them last).
 #
-#     import_config "#{Mix.env}.exs"
+import_config "secrets.exs"

@@ -29,9 +29,13 @@ defmodule Unsplash do
 # h Image height in pixels.
 # rect  4 comma-separated integers representing x, y, width, height of the cropped rectangle.
 
-#GET /photos/search/
-# query  Search terms.
-# category  Category ID(‘s) to filter search. If multiple, comma-separated.
+  #GET /photos/search/
+  # query  Search terms.
+  # category  Category ID(‘s) to filter search. If multiple, comma-separated.
+  def photos('search', query) do
+    params = URI.encode_query(query)
+    ResultStream.new("/photos/search?#{params}")
+  end
 
 #GET /photos/random
 # category Category ID(‘s) to filter selection. If multiple, comma-separated.
