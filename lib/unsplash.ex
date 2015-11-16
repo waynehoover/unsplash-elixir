@@ -24,11 +24,6 @@ defmodule Unsplash do
     ResultStream.new("/photos")
   end
 
-#GET /photos/:id
-# w  Image width in pixels.
-# h Image height in pixels.
-# rect  4 comma-separated integers representing x, y, width, height of the cropped rectangle.
-
   #GET /photos/search/
   # query  Search terms.
   # category  Category ID(‘s) to filter search. If multiple, comma-separated.
@@ -37,13 +32,30 @@ defmodule Unsplash do
     ResultStream.new("/photos/search?#{params}")
   end
 
-#GET /photos/random
-# category Category ID(‘s) to filter selection. If multiple, comma-separated.
-# featured  Limit selection to featured photos.
-# username  Limit selection to a single user.
-# query Limit selection to photos matching a search term.
-# w Image width in pixels.
-# h Image height in pixels.
+  #GET /photos/random
+  # category Category ID(‘s) to filter selection. If multiple, comma-separated.
+  # featured  Limit selection to featured photos.
+  # username  Limit selection to a single user.
+  # query Limit selection to photos matching a search term.
+  # w Image width in pixels.
+  # h Image height in pixels.
+  def photos('random', query) do
+    params = URI.encode_query(query)
+    ResultStream.new("/photos/random?#{params}")
+  end
+
+  #GET /photos/:id
+  # w Image width in pixels.
+  # h Image height in pixels.
+  # rect  4 comma-separated integers representing x, y, width, height of the cropped rectangle.
+
+  #photos(id, w: 123, h: 123, rect: 1234)
+  def photos(id, q \\ []) do
+    params = %{w: q[:w], h: q[:h], rect: q[:rect]}
+    |> Enum.filter(fn {k,v} -> v end)
+    |> URI.encode_query
+    ResultStream.new("/photos/#{id}?#{params}")
+  end
 
 #POST /photos
 # photo The photo to be uploaded.
