@@ -2,10 +2,6 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-# config :unsplash,
-#   application_id: "application_id_goes_here",
-#   application_secret: "application_secret_goes_here"
-
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,

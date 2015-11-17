@@ -1,5 +1,6 @@
 defmodule Unsplash do
   alias Unsplash.ResultStream
+  import Unsplash.Util
 
 #GET /me
 
@@ -47,21 +48,12 @@ defmodule Unsplash do
   #GET /photos/:id
   # w Image width in pixels.
   # h Image height in pixels.
-  # rect  4 comma-separated integers representing x, y, width, height of the cropped rectangle.
+  # rect 4 comma-separated integers representing x, y, width, height of the cropped rectangle.
 
   #photos(id, w: 123, h: 123, rect: 1234)
-  def photos(id, q \\ []) do
-    params = %{w: q[:w], h: q[:h], rect: q[:rect]}
-    |> Enum.filter(fn {k,v} -> v end)
-    |> URI.encode_query
-    #params = get_query_string(q, [:w, :h, :rect])
+  def photos(id, opts \\ []) when is_integer(id) do
+    params = parse_options([:w, :h, :rect], opts) |> URI.encode_query
     ResultStream.new("/photos/#{id}?#{params}")
-  end
-
-  defp get_query_string(options, params) do
-    params |> Enum.map fn (param) ->
-      [param => options[param]]
-    end |> Enum.into %{}
   end
 
 #POST /photos
