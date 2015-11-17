@@ -1,35 +1,54 @@
 defmodule Unsplash do
   alias Unsplash.ResultStream
+  alias Unsplash.Api
   import Unsplash.Util
 
-#GET /me
+  #GET /me
+  def me do
+    ResultStream.new("/me")
+  end
 
-#PUT /me
-# username  Username.
-# first_name  First name.
-# last_name Last name.
-# email Email.
-# url Portfolio/personal URL.
-# location  Location.
-# bio About/bio.
-# instagram_username  Instagram username.
+  #PUT /me
+  # username  Username.
+  # first_name  First name.
+  # last_name Last name.
+  # email Email.
+  # url Portfolio/personal URL.
+  # location  Location.
+  # bio About/bio.
+  # instagram_username  Instagram username.
+  def update_me(opts \\ []) do
+    params = parse_options([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username], opts)
+    Api.put!("/me", params)
+  end
 
-#GET /users/:username
+  #GET /users/:username
+  def users(username) do
+    ResultStream.new("/users/#{username}")
+  end
 
-#GET /users/:username/photos
+  #GET /users/:username/photos
+  def users(username, 'photos') do
+    ResultStream.new("/users/#{username}/photos")
+  end
 
-#GET /users/:username/likes
+  #GET /users/:username/likes
+  def users(username, 'likes') do
+    ResultStream.new("/users/#{username}/likes")
+  end
 
   #GET /photos
   def photos do
     ResultStream.new("/photos")
   end
 
-  #GET /photos/search/
+  def photos(_, opts \\ [])
+
+  #GET /photos/search
   # query  Search terms.
   # category  Category ID(‘s) to filter search. If multiple, comma-separated.
-  def photos('search', query) do
-    params = URI.encode_query(query)
+  def photos(:search, opts) do
+    params = parse_options([:query, :category], opts) |> URI.encode_query
     ResultStream.new("/photos/search?#{params}")
   end
 
@@ -40,8 +59,8 @@ defmodule Unsplash do
   # query Limit selection to photos matching a search term.
   # w Image width in pixels.
   # h Image height in pixels.
-  def photos('random', query) do
-    params = URI.encode_query(query)
+  def photos(:random, opts) do
+    params = parse_options([:category, :featured, :username, :query, :w, :h], opts) |> URI.encode_query
     ResultStream.new("/photos/random?#{params}")
   end
 
@@ -49,35 +68,61 @@ defmodule Unsplash do
   # w Image width in pixels.
   # h Image height in pixels.
   # rect 4 comma-separated integers representing x, y, width, height of the cropped rectangle.
-
-  #photos(id, w: 123, h: 123, rect: 1234)
-  def photos(id, opts \\ []) when is_integer(id) do
+  def photos(id, opts) when is_binary(id) do
     params = parse_options([:w, :h, :rect], opts) |> URI.encode_query
     ResultStream.new("/photos/#{id}?#{params}")
   end
 
-#POST /photos
-# photo The photo to be uploaded.
+  #POST /photos/:id/like
+  def photos(id, :like) when is_binary(id) do
+    Api.post!("/photos/#{id}/like")
+  end
 
-#POST /photos/:id/like
+  # #DELETE /photos/:id/like
+  def photos(id, :unlike) when is_binary(id) do
+    Api.delete!("/photos/#{id}/like")
+  end
 
-#DELETE /photos/:id/like
+  #POST /photos
+  # photo The photo to be uploaded.
+  #
+  # ToDo!
+  def upload_photo(photo) do
+    Api.post!("/photos", photo)
+  end
 
   #GET /categories
   def categories do
-    # Possibly want a consistent api, either return streams always, or lists always.
-    ResultStream.new("/categories") |> Enum.to_list
+    ResultStream.new("/categories")
   end
 
-#GET /categories/:id
+  #GET /categories/:id
+  def categories(id) do
+    ResultStream.new("/categories/#{id}")
+  end
 
-#GET /categories/:id/photos
+  #GET /categories/:id/photos
+  def categories(id, :photos) do
+    ResultStream.new("/categories/#{id}/photos")
+  end
 
-#GET /curated_batches
+  #GET /curated_batches
+  def curated_batches do
+    ResultStream.new("/curated_batches")
+  end
 
-#GET /curated_batches/:id
+  #GET /curated_batches/:id
+  def curated_batches(id) do
+    ResultStream.new("/curated_batches/#{id}")
+  end
 
-#GET /curated_batch/:id/photos
+  #GET /curated_batch/:id/photos
+  def curated_batches(id, :photos) do
+    ResultStream.new("/curated_batches/#{id}/photos")
+  end
 
-#GET /stats/total
+  #GET /stats/total
+  def stats do
+    ResultStream.new("/stats/total")
+  end
 end
