@@ -1,7 +1,6 @@
 defmodule Unsplash do
   alias Unsplash.ResultStream
   alias Unsplash.Api
-  import Unsplash.Util
 
   #GET /me
   def me do
@@ -18,7 +17,7 @@ defmodule Unsplash do
   # bio About/bio.
   # instagram_username  Instagram username.
   def update_me(opts \\ []) do
-    params = parse_options([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username], opts)
+    params = opts |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
     Api.put!("/me", params)
   end
 
@@ -33,6 +32,8 @@ defmodule Unsplash do
   end
 
   #GET /users/:username/likes
+  # page Page number to retrieve. (Optional; default: 1)
+  # per_page  Number of items per page. (Optional; default: 10)
   def users(username, 'likes') do
     ResultStream.new("/users/#{username}/likes")
   end
@@ -47,8 +48,10 @@ defmodule Unsplash do
   #GET /photos/search
   # query  Search terms.
   # category  Category ID(‘s) to filter search. If multiple, comma-separated.
+  # page  Page number to retrieve. (Optional; default: 1)
+  # per_page  Number of items per page. (Optional; default: 10)
   def photos(:search, opts) do
-    params = parse_options([:query, :category], opts) |> URI.encode_query
+    params = opts |> Keyword.take([:query, :category]) |> URI.encode_query
     ResultStream.new("/photos/search?#{params}")
   end
 
@@ -60,7 +63,7 @@ defmodule Unsplash do
   # w Image width in pixels.
   # h Image height in pixels.
   def photos(:random, opts) do
-    params = parse_options([:category, :featured, :username, :query, :w, :h], opts) |> URI.encode_query
+    params = opts |> Keyword.take([:category, :featured, :username, :query, :w, :h]) |> URI.encode_query
     ResultStream.new("/photos/random?#{params}")
   end
 
@@ -69,7 +72,7 @@ defmodule Unsplash do
   # h Image height in pixels.
   # rect 4 comma-separated integers representing x, y, width, height of the cropped rectangle.
   def photos(id, opts) when is_binary(id) do
-    params = parse_options([:w, :h, :rect], opts) |> URI.encode_query
+    params = opts |> Keyword.take([:w, :h, :rect]) |> URI.encode_query
     ResultStream.new("/photos/#{id}?#{params}")
   end
 
