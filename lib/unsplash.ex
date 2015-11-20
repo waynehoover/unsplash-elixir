@@ -3,6 +3,7 @@ defmodule Unsplash do
   alias Unsplash.Api
 
   #GET /me
+  # Requires `read_user` scope
   def me do
     ResultStream.new("/me")
   end
@@ -16,6 +17,7 @@ defmodule Unsplash do
   # location  Location.
   # bio About/bio.
   # instagram_username  Instagram username.
+  # Requires `write_user` scope
   def update_me(opts \\ []) do
     params = opts |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
     Api.put!("/me", params)

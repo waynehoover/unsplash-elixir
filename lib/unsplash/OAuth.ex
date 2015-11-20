@@ -27,14 +27,9 @@ defmodule Unsplash.OAuth do
     |> OAuth2.Client.authorize_url!(params) |> String.replace("%2B","+")
   end
 
-  #ToDo Store token, to be used to authenticate private calls!
   def authorize!(auth_code) do
     OAuth2.Client.get_token!(client, code: auth_code)
-  end
-
-  # you can pass options to the underlying http library via `options` parameter
-  def get_token!(params \\ [], headers \\ [], options \\ []) do
-    OAuth2.Client.get_token!(client(), params, headers, options)
+    |> store_token
   end
 
   # Strategy Callbacks
@@ -49,6 +44,15 @@ defmodule Unsplash.OAuth do
     |> OAuth2.Strategy.AuthCode.get_token(params, headers)
   end
 
+  #ToDo Store token in a process, to be used to authenticate private calls
+  def store_token(token) do
+
+  end
+
+  #ToDo retrieve the token storked above
+  def retrieve_access_token do
+    false
+  end
 
   defp application_id do
     Application.get_env(:unsplash, :application_id)

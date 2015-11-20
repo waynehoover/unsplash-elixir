@@ -16,6 +16,12 @@ defmodule Unsplash.Api do
       {"Accept-Version", "v1"},
       {"Authorization", "Client-ID #{application_id}"}
     ]
+
+    if OAuth.retrieve_access_token do
+      headers ++ ["Authorization", "Bearer #{access_token}"]
+    else
+      headers
+    end
   end
 
   defp application_id do

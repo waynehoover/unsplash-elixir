@@ -18,8 +18,8 @@ more examples coming soon.
 Get Auth code by directing user to this URL:
 `Unsplash.OAuth.authorize_url! scope: "read_user+write_user"`
 
-And then is redirected back to your redirect_uri whith a `access_token` param, which you then can use below:
-`Unsplash.OAuth.authorize!(access_token)`
+And then is redirected back to your redirect_uri whith a `code` query paramater, which you then can use below:
+`Unsplash.OAuth.authorize!(code)`
 
 ## Todo
 
