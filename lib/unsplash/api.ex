@@ -17,7 +17,7 @@ defmodule Unsplash.Api do
       {"Authorization", "Client-ID #{application_id}"}
     ]
 
-    if OAuth.retrieve_access_token do
+    if OAuth.get_token do
       headers ++ ["Authorization", "Bearer #{access_token}"]
     else
       headers
@@ -26,6 +26,10 @@ defmodule Unsplash.Api do
 
   defp application_id do
     Application.get_env(:unsplash, :application_id)
+  end
+
+  defp access_token do
+    ""
   end
 
 end

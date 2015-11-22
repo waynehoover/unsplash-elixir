@@ -2,6 +2,10 @@ defmodule Unsplash do
   alias Unsplash.ResultStream
   alias Unsplash.Api
 
+  def start do
+    Agent.start_link fn -> %{} end, name: :unsplash
+  end
+
   #GET /me
   # Requires `read_user` scope
   def me do

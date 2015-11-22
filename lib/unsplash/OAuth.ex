@@ -16,15 +16,14 @@ defmodule Unsplash.OAuth do
   end
 
   # Possible scopes.
-  # public Default. Read public data.
   # read_user Access user’s private data.
   # write_user  Update the user’s profile.
   # read_photos Read private data from the user’s photos.
   # write_photos  Upload photos on the user’s behalf.
-  # Need to replace for now because of OAuth param to_url
+  # scope param should be space seperated string, like "scope: read_user write_user read_photos"
   def authorize_url!(params \\ []) do
     client
-    |> OAuth2.Client.authorize_url!(params) |> String.replace("%2B","+")
+    |> OAuth2.Client.authorize_url!(params)
   end
 
   def authorize!(auth_code) do
@@ -46,12 +45,12 @@ defmodule Unsplash.OAuth do
 
   #ToDo Store token in a process, to be used to authenticate private calls
   def store_token(token) do
-
+    Agent.update(:unsplash, &Map.put(&1, :token, token))
   end
 
   #ToDo retrieve the token storked above
-  def retrieve_access_token do
-    false
+  def get_token do
+    Agent.get(:unsplash, &Map.get(&1, :token))
   end
 
   defp application_id do
