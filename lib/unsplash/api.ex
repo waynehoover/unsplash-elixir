@@ -11,14 +11,14 @@ defmodule Unsplash.Api do
     @endpoint <> url
   end
 
-  defp process_request_headers(headers) do
-    headers ++ [
+  def process_request_headers(headers) do
+    headers = headers ++ [
       {"Accept-Version", "v1"},
       {"Authorization", "Client-ID #{application_id}"}
     ]
 
-    if OAuth.get_token do
-      headers ++ ["Authorization", "Bearer #{access_token}"]
+    if Unsplash.OAuth.get_access_token do
+      headers ++ [{"Authorization", "Bearer #{Unsplash.OAuth.get_access_token}"}]
     else
       headers
     end
@@ -28,8 +28,5 @@ defmodule Unsplash.Api do
     Application.get_env(:unsplash, :application_id)
   end
 
-  defp access_token do
-    ""
-  end
 
 end
