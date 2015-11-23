@@ -14,8 +14,11 @@ defmodule Unsplash.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :httpoison, :oauth2]]
+    [ applications: [:logger, :httpoison, :oauth2],
+      mod: {Unsplash, []} ]
   end
+
+
 
   # Dependencies can be Hex packages:
   #

@@ -23,7 +23,6 @@ Now every API call will use the access_code gerenated in the above step automati
 
 ## Todo
 
-* Start the agent automatially with Application
 * Documentation
 * Tests
 

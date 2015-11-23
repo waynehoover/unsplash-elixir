@@ -2,7 +2,7 @@ defmodule Unsplash do
   alias Unsplash.ResultStream
   alias Unsplash.Api
 
-  def start do
+  def start(_type, _args) do
     Agent.start_link fn -> %{} end, name: :unsplash
   end
 

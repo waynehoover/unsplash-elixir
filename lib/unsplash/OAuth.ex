@@ -50,14 +50,18 @@ defmodule Unsplash.OAuth do
 
   #Get the Oauth.AccessToken struct from the agent, if its expired refresh it.
   def get_access_token do
-    case Agent.get(:unsplash, &Map.get(&1, :token)) do
-      nil -> nil
-      token ->
-        if OAuth2.AccessToken.expired?(token) do
-          token = OAuth2.AccessToken.refresh!(token)
-        end
-        token.access_token
+    Agent.get(:unsplash, &Map.get(&1, :token))
+    |> process_token
+  end
+
+  def process_token(token) when is_nil(token), do: nil
+
+  def process_token(token) when is_map(token) do
+    if OAuth2.AccessToken.expired?(token) do
+      token = OAuth2.AccessToken.refresh!(token)
+      store_token(token)
     end
+    token.access_token
   end
 
 end
