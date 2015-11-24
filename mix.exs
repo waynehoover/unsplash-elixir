@@ -42,7 +42,7 @@ defmodule Unsplash.Mixfile do
     [
       maintainers: ["waynehoover"],
       licenses: ["MIT"],
-      links: %{"github" => "https://github.com/waynehoover/unsplash-elixir"}
+      links: %{"github" => "https://github.com/waynehoover/unsplash-elixir", "docs" => "http://hexdocs.pm/unsplash/"}
     ]
   end
 end
