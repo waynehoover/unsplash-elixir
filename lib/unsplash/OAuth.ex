@@ -1,4 +1,12 @@
 defmodule Unsplash.OAuth do
+  @moduledoc ~S"""
+  ## Authorization
+  `Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos"`
+  `Unsplash.OAuth.authorize!(code: auth_code_from_the_callback_above)`
+
+  Now all calls will be authorized.
+  """
+
   use OAuth2.Strategy
 
   def client do

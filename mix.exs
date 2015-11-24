@@ -7,9 +7,8 @@ defmodule Unsplash.Mixfile do
      elixir: "~> 1.1",
      description: "Unsplash API in Elixir",
      package: package,
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     docs: docs]
   end
 
   def application do
@@ -21,7 +20,15 @@ defmodule Unsplash.Mixfile do
     [
       {:httpoison, "~> 0.8.0"},
       {:poison, "~> 1.5"},
-      {:oauth2, "~> 0.5"}
+      {:oauth2, "~> 0.5"},
+      {:earmark, "~> 0.1", only: :dev},
+      {:ex_doc, "~> 0.11", only: :dev}
+    ]
+  end
+
+  defp docs do
+    [
+      extras: ["README.md"]
     ]
   end
 

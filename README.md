@@ -21,6 +21,7 @@ Now every API call will use the access_code gerenated in the above step automati
 
 ## Todo
 
+* Implement photo uploading
 * Documentation
 * Tests
 
