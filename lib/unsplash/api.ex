@@ -1,4 +1,7 @@
 defmodule Unsplash.Api do
+  @moduledoc false
+
+  @doc false
   use HTTPoison.Base
 
   @endpoint "https://api.unsplash.com"
