@@ -7,6 +7,7 @@ defmodule Unsplash.OAuth do
   Now all calls will be authorized.
   """
 
+  @doc false
   use OAuth2.Strategy
 
   def client do
@@ -21,13 +22,14 @@ defmodule Unsplash.OAuth do
     ])
   end
 
-  # Possible scopes.
-  # public All public actions (default)
-  # read_user Access user’s private data.
-  # write_user  Update the user’s profile.
-  # read_photos Read private data from the user’s photos.
-  # write_photos  Upload photos on the user’s behalf.
-  # scope param should be space seperated string, like `scope: "public read_user write_user read_photos write_photos"`
+  @doc ~S"""
+  Possible scopes. :scope value should be space seperated string, like `scope: "public read_user write_user read_photos write_photos"`
+  `public` All public actions (default)
+  `read_user` Access user’s private data.
+  `write_user`  Update the user’s profile.
+  `read_photos` Read private data from the user’s photos.
+  `write_photos`  Upload photos on the user’s behalf.
+  """
   def authorize_url!(params \\ []) do
     client
     |> OAuth2.Client.authorize_url!(params)

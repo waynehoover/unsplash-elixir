@@ -2,18 +2,24 @@ defmodule Unsplash.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :unsplash,
-     version: "0.0.1",
-     elixir: "~> 1.1",
-     description: "Unsplash API in Elixir",
-     package: package,
-     deps: deps,
-     docs: docs]
+    [
+      app: :unsplash,
+      version: "0.0.1",
+      elixir: "~> 1.1",
+      description: "Unsplash API in Elixir",
+      source_url: "https://github.com/waynehoover/unsplash-elixir",
+      homepage_url: "https://github.com/waynehoover/unsplash-elixir",
+      package: package,
+      deps: deps,
+      docs: docs
+    ]
   end
 
   def application do
-    [ applications: [:logger, :httpoison, :oauth2],
-      mod: {Unsplash, []} ]
+    [
+      applications: [:logger, :httpoison, :oauth2],
+      mod: {Unsplash, []}
+    ]
   end
 
   defp deps do

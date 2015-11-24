@@ -7,7 +7,7 @@ Unsplash API in Elixir.
 
 * `Unsplash.photos`
 * `Unsplash.categories`
-* All API endpoints supported. See unsplash.ex for full list.
+* And more. All API endpoints supported. See unsplash.ex for full list.
 
 ## Authorization
 

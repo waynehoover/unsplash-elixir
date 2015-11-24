@@ -71,7 +71,6 @@ defmodule Unsplash do
 
   @doc ~S"""
   GET /photos
-
   """
   def photos do
     ResultStream.new("/photos")
@@ -141,7 +140,7 @@ defmodule Unsplash do
   end
 
   @doc ~S"""
-  ToDo!
+  ToDo: Not Implemented
   POST /photos
 
   required param:
@@ -153,7 +152,6 @@ defmodule Unsplash do
 
   @doc ~S"""
   GET /categories
-
   """
   def categories do
     ResultStream.new("/categories")
@@ -179,7 +177,6 @@ defmodule Unsplash do
 
   @doc ~S"""
   GET /curated_batches
-
   """
   def curated_batches do
     ResultStream.new("/curated_batches")
@@ -205,7 +202,6 @@ defmodule Unsplash do
 
   @doc ~S"""
   GET /stats/total
-
   """
   def stats do
     ResultStream.new("/stats/total")
