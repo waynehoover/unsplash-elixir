@@ -1,4 +1,4 @@
 defmodule UnsplashTest do
   use ExUnit.Case
-  doctest Unsplash
+  doctest Unsplash.OAuth
 end

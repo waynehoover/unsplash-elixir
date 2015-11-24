@@ -23,13 +23,23 @@ defmodule Unsplash.OAuth do
   end
 
   @doc ~S"""
-  Possible scopes. :scope value should be space seperated string, like `scope: "public read_user write_user read_photos write_photos write_likes"`
-  `public` All public actions (default)
-  `read_user` Access user’s private data.
-  `write_user`  Update the user’s profile.
-  `read_photos` Read private data from the user’s photos.
-  `write_photos`  Upload photos on the user’s behalf.
-  `write_likes` Like photos on a the user`s behalf.
+  Generates the authorization url which then authenticates with the user.
+
+  The `scope` option should be space seperated string of requested scopes.
+
+  Possible scopes:
+    * `public` All public actions (default)
+    * `read_user` Access user’s private data.
+    * `write_user`  Update the user’s profile.
+    * `read_photos` Read private data from the user’s photos.
+    * `write_photos`  Upload photos on the user’s behalf.
+    * `write_likes` Like photos on a the user`s behalf.
+
+  ## Examples
+    iex> url = Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos write_likes"
+    iex> is_binary(url)
+    true
+
   """
   def authorize_url!(params \\ []) do
     client
