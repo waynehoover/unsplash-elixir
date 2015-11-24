@@ -43,27 +43,31 @@ defmodule Unsplash.OAuth do
     |> OAuth2.Strategy.AuthCode.get_token(params, headers)
   end
 
-  # use get_and_update?
+  ## Token storage in an Agent
+  def start do
+    Agent.start_link fn -> %{} end, name: __MODULE__
+  end
+
   def store_token(token) do
-    Agent.update(:unsplash, &Map.put(&1, :token, token))
+    Agent.update(__MODULE__, &Map.put(&1, :token, token))
+    token
   end
 
   defdelegate un_authorize!, to: __MODULE__, as: :remove_token
   def remove_token do
-    Agent.update(:unsplash,  &Map.put(&1, :token, nil))
+    Agent.update(__MODULE__,  &Map.put(&1, :token, nil))
   end
 
   #Get the Oauth.AccessToken struct from the agent
   def get_access_token do
-    Agent.get(:unsplash, &Map.get(&1, :token))
+    Agent.get(__MODULE__, &Map.get(&1, :token))
     |> process_token
   end
 
   #If the token is expired refresh it.
   def process_token(token) when is_map(token) do
     if OAuth2.AccessToken.expired?(token) do
-      token = OAuth2.AccessToken.refresh!(token)
-      store_token(token)
+      token = token |> OAuth2.AccessToken.refresh! |> store_token
     end
     token.access_token
   end

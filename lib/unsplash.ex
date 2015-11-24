@@ -3,7 +3,7 @@ defmodule Unsplash do
   alias Unsplash.Api
 
   def start(_type, _args) do
-    Agent.start_link fn -> %{} end, name: :unsplash
+    Unsplash.OAuth.start
   end
 
   #GET /me
