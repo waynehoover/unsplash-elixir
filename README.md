@@ -6,10 +6,8 @@ Unsplash API in Elixir.
 ## To Use
 
 * `Unsplash.photos`
-* `Unsplash.me`
-...
-
-more examples coming soon.
+* `Unsplash.categories`
+* All API endpoints supported. See unsplash.ex for full list.
 
 ## Authorization
 
@@ -27,8 +25,6 @@ Now every API call will use the access_code gerenated in the above step automati
 * Tests
 
 ## Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed as:
 
   1. Add unsplash to your list of dependencies in `mix.exs`:
 
