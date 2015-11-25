@@ -1,13 +1,16 @@
 # Unsplash
 
-Unsplash API in Elixir.
+[Unsplash](https://unsplash.com) API wrapper in Elixir.
 
 
-## To Use
+## Exmaple Usage
 
-* `Unsplash.photos`
-* `Unsplash.categories`
-* And more. All API endpoints supported. See [unsplash.ex](http://hexdocs.pm/unsplash/Unsplash.html) for full list.
+* `Unsplash.photos(:search, query: "Austin", catgeroy: "2") |> Enum.take(1)`
+* `Unsplash.categories |> Enum.take(1)`
+* And more. All [API endpoints](https://unsplash.com/documentation) are supported. See [documentation](http://hexdocs.pm/unsplash/Unsplash.html) for full list.
+
+Each API call that is paginated returns a stream. You can resolve the stream by calling any Enum function, this way you don't have to think about pagination. For example to get one random photo: `Unsplash.photos(:random) |> Enum.take(1)` or to get 100 random photos `Unsplash.photos(:random) |> Enum.take(100)`.
+
 
 ## Authorization
 
@@ -19,9 +22,6 @@ After the user grants access, she will be redirected back to your redirect_uri w
 
 Now every API call will use the access_code gerenated in the above step automatically.
 
-## Todo
-
-* Complete test coverage
 
 ## Installation
 
@@ -36,3 +36,9 @@ Now every API call will use the access_code gerenated in the above step automati
         def application do
           [applications: [:unsplash]]
         end
+
+
+## Todo
+
+* Complete test coverage
+* Handle errors
