@@ -61,4 +61,83 @@ defmodule UnsplashTest do
     end
   end
 
+  # Curated Batches
+  test "Unsplash.curated_batches" do
+    use_cassette "curated_batches" do
+      assert is_list Unsplash.curated_batches |> Enum.take(1)
+    end
+  end
+
+  test "Unsplash.curated_batches(id)" do
+    use_cassette "curated_batches_id" do
+      assert is_list Unsplash.curated_batches("90") |> Enum.take(1)
+    end
+  end
+
+  test "Unsplash.curated_batches(id, :photos)" do
+    use_cassette "curated_batches_id_photos" do
+      assert is_list Unsplash.curated_batches("90", :photos) |> Enum.take(1)
+    end
+  end
+
+  # Upload Photo
+  @tag :skip
+  test "Unsplash.upload_photo(path)" do
+    use_cassette "upload_photo" do
+      assert is_list Unsplash.uplod_photo("photo.jpg") |> Enum.take(1)
+    end
+  end
+
+  # Like photos
+  @tag :skip
+  test "Unsplash.photos(id, :like)" do
+    use_cassette "like_photo" do
+      assert is_list Unsplash.photos("0XR2s9D3PLI", :like) |> Enum.take(1)
+    end
+  end
+
+  @tag :skip
+  test "Unsplash.photos(id, :unlike)" do
+    use_cassette "unlike_photo" do
+      assert is_list Unsplash.photos("0XR2s9D3PLI", :unlike) |> Enum.take(1)
+    end
+  end
+
+  # Users
+  @tag :skip
+  test "Unsplash.me" do
+    use_cassette "me" do
+      assert is_list Unsplash.me |> Enum.to_list
+    end
+  end
+
+  @tag :skip
+  test "Unsplash.update_me" do
+    use_cassette "update_me" do
+      assert is_list Unsplash.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list
+    end
+  end
+
+
+  @tag :skip
+  test "Unsplash.users(username)" do
+    use_cassette "users_username" do
+      assert is_list Unsplash.users("believenyaself") |> Enum.to_list
+    end
+  end
+
+  @tag :skip
+  test "Unsplash.users(username, :photos)" do
+    use_cassette "users_username_photos" do
+      assert is_list Unsplash.users("believenyaself", :photos) |> Enum.to_list
+    end
+  end
+
+  @tag :skip
+  test "Unsplash.users(username, :likes)" do
+    use_cassette "users_username_likes" do
+      assert is_list Unsplash.users("believenyaself", :likes) |> Enum.to_list
+    end
+  end
+
 end

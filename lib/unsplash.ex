@@ -61,7 +61,7 @@ defmodule Unsplash do
   Args:
     * `username` - the username string
   """
-  def users(username, 'photos') do
+  def users(username, :photos) do
     ResultStream.new("/users/#{username}/photos")
   end
 
@@ -71,7 +71,7 @@ defmodule Unsplash do
   Args:
     * `username` - the username string
   """
-  def users(username, 'likes') do
+  def users(username, :likes) do
     ResultStream.new("/users/#{username}/likes")
   end
 
