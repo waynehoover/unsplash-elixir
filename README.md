@@ -1,4 +1,4 @@
-# Unsplash
+# Unsplash [![Build Status](https://travis-ci.org/waynehoover/unsplash-elixir.svg?branch=master)](https://travis-ci.org/waynehoover/unsplash-elixir) [![Hex pm](http://img.shields.io/hexpm/v/unsplash.svg?style=flat)](https://hex.pm/packages/unsplash)
 
 [Unsplash](https://unsplash.com) API wrapper in Elixir.
 
