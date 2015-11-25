@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/stats/total"
+    },
+    "response": {
+      "body": "{\"photo_downloads\":60414772,\"batch_downloads\":47391162}",
+      "headers": {
+        "Server": "Cowboy",
+        "Connection": "keep-alive",
+        "Date": "Wed, 25 Nov 2015 20:43:27 GMT",
+        "Status": "200 OK",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Content-Length": "55",
+        "Etag": "W/\"a0763bc8a1e48e7df8f8644962b66d47\"",
+        "X-Request-Id": "cd0bf461-7863-40c0-aa56-2d579ff04e30",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "95",
+        "X-Runtime": "0.044553",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

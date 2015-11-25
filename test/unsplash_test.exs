@@ -54,4 +54,11 @@ defmodule UnsplashTest do
     end
   end
 
+  # Stats
+  test "Unsplash.stats" do
+    use_cassette "stats" do
+      assert is_list Unsplash.stats |> Enum.to_list
+    end
+  end
+
 end
