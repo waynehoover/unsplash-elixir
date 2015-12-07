@@ -38,7 +38,13 @@ defmodule UnsplashTest do
 
   test "Unsplash.photos(:search, opts)" do
     use_cassette "photos_search" do
-      assert is_list Unsplash.photos(:search, query: "Austin", catgeroy: "2") |> Enum.take(1)
+      assert is_list Unsplash.photos(:search, query: "Austin", catgeroy: "2")
+    end
+  end
+
+  test "Unsplash.photos(:search, per_page: 33)" do
+    use_cassette "photos_search_33_per_page" do
+      assert Enum.count(Unsplash.photos(:search, query: "nature", per_page: 33)) == 33
     end
   end
 

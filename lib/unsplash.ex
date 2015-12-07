@@ -95,8 +95,9 @@ defmodule Unsplash do
     * `category` - Category ID(‘s) to filter search. If multiple, comma-separated.
   """
   def photos(:search, opts) do
-    params = opts |> Keyword.take([:query, :category]) |> URI.encode_query
-    ResultStream.new("/photos/search?#{params}")
+    opts = Keyword.merge([per_page: 10], opts)
+    params = opts |> Keyword.take([:query, :category, :per_page]) |> URI.encode_query
+    ResultStream.new("/photos/search?#{params}") |> Enum.take(Keyword.fetch!(opts, :per_page))
   end
 
   @doc ~S"""
