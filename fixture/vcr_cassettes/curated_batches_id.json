@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/curated_batches/90"
+    },
+    "response": {
+      "body": "{\"id\":90,\"published_at\":\"2015-11-21T13:51:51-05:00\",\"downloads\":97659,\"curator\":{\"id\":\"nBQ36gWKWVw\",\"username\":\"ello\",\"name\":\"Ello Team\",\"bio\":\"The team behind the beautiful, ad-free social network Ello.\",\"links\":{\"self\":\"https://api.unsplash.com/users/ello\",\"html\":\"http://unsplash.com/ello\",\"photos\":\"https://api.unsplash.com/users/ello/photos\",\"likes\":\"https://api.unsplash.com/users/ello/likes\"}},\"links\":{\"self\":\"https://api.unsplash.com/curated_batches/90\",\"html\":\"http://unsplash.com/curated_batches/90\",\"photos\":\"https://api.unsplash.com/curated_batches/90/photos\",\"download\":\"https://download.unsplash.com/zip-archives/90-archive.zip\"}}",
+      "headers": {
+        "Server": "Cowboy",
+        "Connection": "keep-alive",
+        "Date": "Wed, 25 Nov 2015 21:29:25 GMT",
+        "Status": "200 OK",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Content-Length": "645",
+        "Etag": "W/\"78e8402869432c24a393ac7f1bb8b812\"",
+        "X-Request-Id": "a0dcb711-e03d-494c-94b0-3cf0370def05",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "98",
+        "X-Runtime": "0.149836",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

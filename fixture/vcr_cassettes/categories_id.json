@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/categories/2"
+    },
+    "response": {
+      "body": "{\"id\":2,\"title\":\"Buildings\",\"photo_count\":9536,\"links\":{\"self\":\"https://api.unsplash.com/categories/2\",\"photos\":\"https://api.unsplash.com/categories/2/photos\"}}",
+      "headers": {
+        "Server": "Cowboy",
+        "Connection": "keep-alive",
+        "Date": "Wed, 25 Nov 2015 03:42:42 GMT",
+        "Status": "200 OK",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Content-Length": "160",
+        "Etag": "W/\"17de27e4e64f1371e68e62db50f35652\"",
+        "X-Request-Id": "8d044d82-f9be-4dcc-8a77-7b0d7c005b90",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "54",
+        "X-Runtime": "0.063245",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

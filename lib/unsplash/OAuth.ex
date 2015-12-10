@@ -1,12 +1,13 @@
 defmodule Unsplash.OAuth do
   @moduledoc ~S"""
   ## Authorization
-  `Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos"`
+  `Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos write_likes"`
   `Unsplash.OAuth.authorize!(code: auth_code_from_the_callback_above)`
 
   Now all calls will be authorized.
   """
 
+  @doc false
   use OAuth2.Strategy
 
   def client do
@@ -21,13 +22,25 @@ defmodule Unsplash.OAuth do
     ])
   end
 
-  # Possible scopes.
-  # public All public actions (default)
-  # read_user Access user’s private data.
-  # write_user  Update the user’s profile.
-  # read_photos Read private data from the user’s photos.
-  # write_photos  Upload photos on the user’s behalf.
-  # scope param should be space seperated string, like `scope: "public read_user write_user read_photos write_photos"`
+  @doc ~S"""
+  Generates the authorization url which then authenticates with the user.
+
+  The `scope` option should be space seperated string of requested scopes.
+
+  Possible scopes:
+    * `public` All public actions (default)
+    * `read_user` Access user’s private data.
+    * `write_user`  Update the user’s profile.
+    * `read_photos` Read private data from the user’s photos.
+    * `write_photos`  Upload photos on the user’s behalf.
+    * `write_likes` Like photos on a the user`s behalf.
+
+  ## Examples
+    iex> url = Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos write_likes"
+    iex> is_binary(url)
+    true
+
+  """
   def authorize_url!(params \\ []) do
     client
     |> OAuth2.Client.authorize_url!(params)

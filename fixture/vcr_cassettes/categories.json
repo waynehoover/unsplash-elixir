@@ -1,0 +1,38 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/categories"
+    },
+    "response": {
+      "body": "[{\"id\":2,\"title\":\"Buildings\",\"photo_count\":9536,\"links\":{\"self\":\"https://api.unsplash.com/categories/2\",\"photos\":\"https://api.unsplash.com/categories/2/photos\"}},{\"id\":3,\"title\":\"Food \\u0026 Drink\",\"photo_count\":1269,\"links\":{\"self\":\"https://api.unsplash.com/categories/3\",\"photos\":\"https://api.unsplash.com/categories/3/photos\"}},{\"id\":4,\"title\":\"Nature\",\"photo_count\":25270,\"links\":{\"self\":\"https://api.unsplash.com/categories/4\",\"photos\":\"https://api.unsplash.com/categories/4/photos\"}},{\"id\":8,\"title\":\"Objects\",\"photo_count\":5186,\"links\":{\"self\":\"https://api.unsplash.com/categories/8\",\"photos\":\"https://api.unsplash.com/categories/8/photos\"}},{\"id\":6,\"title\":\"People\",\"photo_count\":7800,\"links\":{\"self\":\"https://api.unsplash.com/categories/6\",\"photos\":\"https://api.unsplash.com/categories/6/photos\"}},{\"id\":7,\"title\":\"Technology\",\"photo_count\":729,\"links\":{\"self\":\"https://api.unsplash.com/categories/7\",\"photos\":\"https://api.unsplash.com/categories/7/photos\"}}]",
+      "headers": {
+        "Server": "Cowboy",
+        "Connection": "keep-alive",
+        "Date": "Wed, 25 Nov 2015 03:42:41 GMT",
+        "Status": "200 OK",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Content-Length": "968",
+        "Etag": "W/\"8463a13972523fb78baea86bc1533f9d\"",
+        "X-Request-Id": "b2b38a81-f6c6-456a-91c2-a06d38d1fd64",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "56",
+        "X-Runtime": "0.040967",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
