@@ -6,6 +6,9 @@ defmodule Unsplash.Mixfile do
      version: "0.0.1",
      elixir: "~> 1.1",
      description: "Unsplash API in Elixir",
+     name: "Unsplash Elixir",
+     source_url: "https://github.com/waynehoover/unsplash-elixir",
+     homepage_url: "https://github.com/waynehoover/unsplash-elixir",
      package: package,
      deps: deps,
      docs: docs]
