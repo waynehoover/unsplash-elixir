@@ -41,8 +41,7 @@ defmodule Unsplash do
   Requires `write_user` scope
   """
   def update_me(opts \\ []) do
-    params = opts
-                  |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
+    params = opts |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
                   |> Enum.into(%{})
                   |> Poison.encode!
      Api.put!("/me", params).body |> Poison.decode!
@@ -58,14 +57,16 @@ defmodule Unsplash do
     ResultStream.new("/users/#{username}")
   end
 
+  def users(_, _, opts \\ [])
   @doc ~S"""
   GET /users/:username/photos
 
   Args:
     * `username` - the username string
   """
-  def users(username, :photos) do
-    ResultStream.new("/users/#{username}/photos")
+  def users(username, :photos, opts) do
+    params = build_params([:per_page, :page], opts)
+    ResultStream.new("/users/#{username}/photos?#{params}")
   end
 
   @doc ~S"""
@@ -74,18 +75,20 @@ defmodule Unsplash do
   Args:
     * `username` - the username string
   """
-  def users(username, :likes) do
-    ResultStream.new("/users/#{username}/likes")
+  def users(username, :likes, opts) do
+    params = build_params([:per_page, :page], opts)
+    ResultStream.new("/users/#{username}/likes?#{params}")
   end
+
+  def photos(_, opts \\ [])
 
   @doc ~S"""
   GET /photos
   """
-  def photos do
-    ResultStream.new("/photos")
+  def photos(:all, opts) do
+    params = build_params([:per_page, :page], opts)
+    ResultStream.new("/photos?#{params}")
   end
-
-  def photos(_, opts \\ [])
 
   @doc ~S"""
   GET /photos/search
@@ -117,7 +120,7 @@ defmodule Unsplash do
     * `h` - Image height in pixels.
   """
   def photos(:random, opts) do
-    params = build_params([:category, :featured, :username, :query, :w, :h], opts)
+    params = build_params([:category, :featured, :username, :query, :w, :h, :per_page, :page], opts)
     ResultStream.new("/photos/random?#{params}")
   end
 
@@ -199,8 +202,9 @@ defmodule Unsplash do
   Args:
     * `id` - The category ID
   """
-  def categories(id, :photos) do
-    ResultStream.new("/categories/#{id}/photos")
+  def categories(id, :photos, opts \\ []) do
+    params = build_params([:per_page, :page], opts)
+    ResultStream.new("/categories/#{id}/photos?#{params}")
   end
 
   @doc ~S"""
@@ -226,8 +230,9 @@ defmodule Unsplash do
   Args:
     * `id` - The curated batch ID
   """
-  def curated_batches(id, :photos) do
-    ResultStream.new("/curated_batches/#{id}/photos")
+  def curated_batches(id, :photos, opts \\ []) do
+    params = build_params([:per_page, :page], opts)
+    ResultStream.new("/curated_batches/#{id}/photos?#{params}")
   end
 
   @doc ~S"""

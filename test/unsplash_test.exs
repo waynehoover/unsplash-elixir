@@ -9,7 +9,7 @@ defmodule UnsplashTest do
     ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
     ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
     # dummy token
-    Unsplash.OAuth.store_token "2c89af8c25e6e7827f4c36ff48a8c12642a2b8c088616f69937ce2064924e4b2"
+    Unsplash.OAuth.store_token "cc89af8c25e6e7827f4c36ff48a8c12642a2b8c088616f69937ce2064924e4b2"
     HTTPoison.start
   end
 
@@ -33,9 +33,9 @@ defmodule UnsplashTest do
   end
 
   # Photos
-  test "Unsplash.photos" do
+  test "Unsplash.photos(:all)" do
     use_cassette "photos" do
-      assert is_list Unsplash.photos |> Enum.take(1)
+      assert is_list Unsplash.photos(:all) |> Enum.take(1)
     end
   end
 

@@ -17,7 +17,7 @@
       "headers": {
         "Server": "Cowboy",
         "Connection": "keep-alive",
-        "Date": "Sat, 12 Dec 2015 06:30:47 GMT",
+        "Date": "Sat, 12 Dec 2015 12:01:35 GMT",
         "Status": "200 OK",
         "Strict-Transport-Security": "max-age=31536000",
         "Access-Control-Allow-Origin": "*",
@@ -26,10 +26,10 @@
         "Content-Type": "application/json",
         "Content-Length": "385",
         "Etag": "W/\"3c332fc379988686f6a7f16be5d58e35\"",
-        "X-Request-Id": "20aaf51a-30b9-480c-aaa5-928883b051e4",
+        "X-Request-Id": "39f4f11c-7ef2-4627-9371-a5cfe230b3b9",
         "X-Ratelimit-Limit": "100",
-        "X-Ratelimit-Remaining": "45",
-        "X-Runtime": "0.063512",
+        "X-Ratelimit-Remaining": "80",
+        "X-Runtime": "0.058282",
         "Via": "1.1 vegur"
       },
       "status_code": 200,
