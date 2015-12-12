@@ -4,7 +4,8 @@
       "body": "",
       "headers": {
         "Accept-Version": "v1",
-        "Authorization": "Client-ID client_id"
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
       },
       "method": "get",
       "options": [],
@@ -12,23 +13,23 @@
       "url": "https://api.unsplash.com/photos/random?query=Austin&w=200&h=200"
     },
     "response": {
-      "body": "{\"id\":\"v0lnIpnA3lA\",\"width\":5184,\"height\":3456,\"color\":\"#2F2F2F\",\"downloads\":0,\"likes\":0,\"urls\":{\"full\":\"https://images.unsplash.com/photo-1440455969765-abba910bdba2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=8d146a59bc5e2c545fa2c2704f7c1b07\",\"regular\":\"https://images.unsplash.com/photo-1440455969765-abba910bdba2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=5d5a0bb638cde3a35fd8f3edeb921a10\",\"small\":\"https://images.unsplash.com/photo-1440455969765-abba910bdba2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=400&fit=max&s=c3854c0148950567d9f11e02889f680e\",\"thumb\":\"https://images.unsplash.com/photo-1440455969765-abba910bdba2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=200&fit=max&s=783b4f3c8b3d30abde0abc8c370008b9\",\"custom\":\"https://images.unsplash.com/photo-1440455969765-abba910bdba2?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=200&h=200&fit=crop&s=cac3a9f6827a69459461ef5cc72925f3\"},\"links\":{\"self\":\"https://api.unsplash.com/photos/v0lnIpnA3lA\",\"html\":\"http://unsplash.com/photos/v0lnIpnA3lA\",\"download\":\"http://unsplash.com/photos/v0lnIpnA3lA/download\"},\"user\":{\"id\":\"riSzNpadIzw\",\"username\":\"joshk\",\"name\":\"Joshua Wilson\",\"links\":{\"self\":\"https://api.unsplash.com/users/joshk\",\"html\":\"http://unsplash.com/joshk\",\"photos\":\"https://api.unsplash.com/users/joshk/photos\",\"likes\":\"https://api.unsplash.com/users/joshk/likes\"}}}",
+      "body": "{\"id\":\"s0mWzOiGN3I\",\"width\":5184,\"height\":3456,\"color\":\"#4B4B4B\",\"downloads\":1,\"likes\":0,\"exif\":{\"make\":\"Canon\",\"model\":\"Canon EOS REBEL T2i\",\"exposure_time\":\"0.06666666666666667\",\"aperture\":\"4.33985\",\"focal_length\":\"28\",\"iso\":500},\"urls\":{\"full\":\"https://images.unsplash.com/photo-1440456136375-fe0c20044037?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&s=04f2f4ebd562875b7774201851c34891\",\"regular\":\"https://images.unsplash.com/photo-1440456136375-fe0c20044037?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=1080&fit=max&s=9937850e92aeee85aa0043808bd63182\",\"small\":\"https://images.unsplash.com/photo-1440456136375-fe0c20044037?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=400&fit=max&s=4365a27f305d0edfbc635f3732b7354b\",\"thumb\":\"https://images.unsplash.com/photo-1440456136375-fe0c20044037?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=200&fit=max&s=b709556caac6580be5ddceed828bda41\",\"custom\":\"https://images.unsplash.com/photo-1440456136375-fe0c20044037?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&w=200&h=200&fit=crop&s=1135f21a10fe852d5f64852595a518cf\"},\"categories\":[{\"id\":2,\"title\":\"Buildings\",\"photo_count\":10100,\"links\":{\"self\":\"https://api.unsplash.com/categories/2\",\"photos\":\"https://api.unsplash.com/categories/2/photos\"}}],\"links\":{\"self\":\"https://api.unsplash.com/photos/s0mWzOiGN3I\",\"html\":\"http://unsplash.com/photos/s0mWzOiGN3I\",\"download\":\"http://unsplash.com/photos/s0mWzOiGN3I/download\"},\"user\":{\"id\":\"riSzNpadIzw\",\"username\":\"joshk\",\"name\":\"Joshua Wilson\",\"links\":{\"self\":\"https://api.unsplash.com/users/joshk\",\"html\":\"http://unsplash.com/joshk\",\"photos\":\"https://api.unsplash.com/users/joshk/photos\",\"likes\":\"https://api.unsplash.com/users/joshk/likes\"}}}",
       "headers": {
         "Server": "Cowboy",
         "Connection": "keep-alive",
-        "Date": "Wed, 25 Nov 2015 20:27:35 GMT",
+        "Date": "Sat, 12 Dec 2015 06:27:54 GMT",
         "Status": "200 OK",
         "Strict-Transport-Security": "max-age=31536000",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Request-Method": "*",
         "Cache-Control": "max-age=7200, public",
         "Content-Type": "application/json",
-        "Content-Length": "1335",
-        "Etag": "W/\"e451e3f63d61aa34d44af49ae9376fe4\"",
-        "X-Request-Id": "da675af4-6205-4e29-a564-851496e83774",
+        "Content-Length": "1655",
+        "Etag": "W/\"f8b573e0941ecb6f534011afab6b5e85\"",
+        "X-Request-Id": "0ce2a475-daa9-47fa-8a2c-316312d5987e",
         "X-Ratelimit-Limit": "100",
-        "X-Ratelimit-Remaining": "99",
-        "X-Runtime": "0.389095",
+        "X-Ratelimit-Remaining": "50",
+        "X-Runtime": "0.078606",
         "Via": "1.1 vegur"
       },
       "status_code": 200,

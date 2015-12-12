@@ -1,6 +1,8 @@
 defmodule Unsplash.ResultStream do
   alias Unsplash.Api
 
+  # Can
+
   def new(url) do
     Stream.resource(
       fn -> fetch_page(url) end,
