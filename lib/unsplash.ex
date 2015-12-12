@@ -169,11 +169,10 @@ defmodule Unsplash do
 
   Requires the `write_photos` scope
 
-  This currently is broken, with error "Photo is invalid."
+  Thanks to https://stackoverflow.com/q/33557133/ for the solution on how to upload named files.
   """
   def upload_photo(photo) do
-    { :ok, file } = File.read(photo)
-    Api.post!("/photos", {:form, [photo: file]}, ["Content-type": "multipart/form-data;"], [recv_timeout: 30000]).body
+    Api.post!("/photos", {:multipart, [{:file, photo, { ["form-data"], [name: "\"photo\"", filename: "\"#{photo}\""]},[]}]}, [], [recv_timeout: 30000]).body
     |> Poison.decode!
   end
 
