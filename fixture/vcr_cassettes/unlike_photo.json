@@ -7,32 +7,30 @@
         "Authorization": "Client-ID client_id",
         "Content-type": "application/json; charset=utf-8"
       },
-      "method": "get",
+      "method": "delete",
       "options": [],
       "request_body": "",
-      "url": "https://api.unsplash.com/stats/total"
+      "url": "https://api.unsplash.com/photos/0XR2s9D3PLI/like"
     },
     "response": {
-      "body": "{\"photo_downloads\":62269531,\"batch_downloads\":48381359}",
+      "body": "#Reference<0.0.2.32>",
       "headers": {
         "Server": "Cowboy",
+        "Content-Length": "0",
         "Connection": "keep-alive",
-        "Date": "Sat, 12 Dec 2015 06:27:55 GMT",
-        "Status": "200 OK",
+        "Date": "Sat, 12 Dec 2015 06:27:50 GMT",
+        "Status": "204 No Content",
         "Strict-Transport-Security": "max-age=31536000",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Request-Method": "*",
-        "Cache-Control": "max-age=7200, public",
-        "Content-Type": "application/json",
-        "Content-Length": "55",
-        "Etag": "W/\"e1e85a55146819b7b66ee8a88ac80d17\"",
-        "X-Request-Id": "175d80a8-a77a-4655-a5d3-603572cde8f0",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "ea00c852-bbbd-40db-860b-068f1bf43317",
         "X-Ratelimit-Limit": "100",
-        "X-Ratelimit-Remaining": "47",
-        "X-Runtime": "0.129655",
+        "X-Ratelimit-Remaining": "55",
+        "X-Runtime": "0.079949",
         "Via": "1.1 vegur"
       },
-      "status_code": 200,
+      "status_code": 204,
       "type": "ok"
     }
   }

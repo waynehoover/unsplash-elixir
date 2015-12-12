@@ -3,7 +3,7 @@ defmodule Unsplash do
   # The Unslpash API in Elixir
 
   ## Pagination
-  Those API results that are paginated will return a Stream in which you can resolve by using any Enum function.
+  Those API results that are paginated will return a Stream in which you can resolve by using any Enum function. You can also pass in `per_page` and `page` keywords if you would like to do pagination manually. Max per_page is 30.
   """
 
   alias Unsplash.ResultStream
@@ -41,8 +41,11 @@ defmodule Unsplash do
   Requires `write_user` scope
   """
   def update_me(opts \\ []) do
-    params = opts |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
-    Api.put!("/me", params)
+    params = opts
+                  |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
+                  |> Enum.into(%{})
+                  |> Poison.encode!
+     Api.put!("/me", params).body |> Poison.decode!
   end
 
   @doc ~S"""
@@ -95,9 +98,8 @@ defmodule Unsplash do
     * `category` - Category ID(‘s) to filter search. If multiple, comma-separated.
   """
   def photos(:search, opts) do
-    opts = Keyword.merge([per_page: 10], opts)
-    params = opts |> Keyword.take([:query, :category, :per_page]) |> URI.encode_query
-    ResultStream.new("/photos/search?#{params}") |> Enum.take(Keyword.fetch!(opts, :per_page))
+    params = build_params([:query, :category, :per_page, :page], opts)
+    ResultStream.new("/photos/search?#{params}")
   end
 
   @doc ~S"""
@@ -115,7 +117,7 @@ defmodule Unsplash do
     * `h` - Image height in pixels.
   """
   def photos(:random, opts) do
-    params = opts |> Keyword.take([:category, :featured, :username, :query, :w, :h]) |> URI.encode_query
+    params = build_params([:category, :featured, :username, :query, :w, :h], opts)
     ResultStream.new("/photos/random?#{params}")
   end
 
@@ -132,7 +134,7 @@ defmodule Unsplash do
     * `rect` - 4 comma-separated integers representing x, y, width, height of the cropped rectangle.
   """
   def photos(id, opts) when is_binary(id) do
-    params = opts |> Keyword.take([:w, :h, :rect]) |> URI.encode_query
+    params = build_params([:w, :h, :rect, :per_page, :page], opts)
     ResultStream.new("/photos/#{id}?#{params}")
   end
 
@@ -144,8 +146,9 @@ defmodule Unsplash do
 
   Requires the `write_likes` scope
   """
-  def photos(id, :like) when is_binary(id) do
-    Api.post!("/photos/#{id}/like")
+  def photos(:like, id) when is_binary(id) do
+    Api.post!("/photos/#{id}/like", []).body
+    |> Poison.decode!
   end
 
   @doc ~S"""
@@ -154,8 +157,8 @@ defmodule Unsplash do
   Args:
     * `id` - the photo id
   """
-  def photos(id, :unlike) when is_binary(id) do
-    Api.delete!("/photos/#{id}/like")
+  def photos(:unlike, id) when is_binary(id) do
+    Api.delete!("/photos/#{id}/like").status_code
   end
 
   @doc ~S"""
@@ -165,9 +168,13 @@ defmodule Unsplash do
     * `photo` - the path of the photo to be uploaded.
 
   Requires the `write_photos` scope
+
+  This currently is broken
   """
   def upload_photo(photo) do
-    Api.post!("/photos", {:file, photo})
+    { :ok, file } = File.read(photo)
+    Api.post!("/photos", "{\"photo\":#{file}}").body
+    |> Poison.decode!
   end
 
   @doc ~S"""
@@ -229,5 +236,9 @@ defmodule Unsplash do
   """
   def stats do
     ResultStream.new("/stats/total")
+  end
+
+  defp build_params(params, opts) do
+    opts |> Keyword.take([:per_page, :page | params]) |> URI.encode_query
   end
 end

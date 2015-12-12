@@ -1,12 +1,15 @@
 defmodule UnsplashTest do
   use ExUnit.Case, async: false
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
+  import PathHelpers
 
   doctest Unsplash.OAuth
 
   setup_all do
     ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
     ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
+    # dummy token
+    Unsplash.OAuth.store_token "2c89af8c25e6e7827f4c36ff48a8c12642a2b8c088616f69937ce2064924e4b2"
     HTTPoison.start
   end
 
@@ -38,13 +41,13 @@ defmodule UnsplashTest do
 
   test "Unsplash.photos(:search, opts)" do
     use_cassette "photos_search" do
-      assert is_list Unsplash.photos(:search, query: "Austin", catgeroy: "2")
+      assert is_list Unsplash.photos(:search, query: "Austin", catgeroy: "2") |> Enum.take(1)
     end
   end
 
   test "Unsplash.photos(:search, per_page: 33)" do
     use_cassette "photos_search_33_per_page" do
-      assert Enum.count(Unsplash.photos(:search, query: "nature", per_page: 33)) == 33
+      assert Enum.count(Unsplash.photos(:search, query: "nature", per_page: 30) |> Enum.take(33)) == 33
     end
   end
 
@@ -90,34 +93,30 @@ defmodule UnsplashTest do
   @tag :skip
   test "Unsplash.upload_photo(path)" do
     use_cassette "upload_photo" do
-      assert is_list Unsplash.uplod_photo("photo.jpg") |> Enum.take(1)
+      assert is_list Unsplash.upload_photo(fixture_path("image.png")) |> Enum.take(1)
     end
   end
 
   # Like photos
-  @tag :skip
-  test "Unsplash.photos(id, :like)" do
+  test "Unsplash.photos(:like, id)" do
     use_cassette "like_photo" do
-      assert is_list Unsplash.photos("0XR2s9D3PLI", :like) |> Enum.take(1)
+      assert is_list Unsplash.photos(:like, "0XR2s9D3PLI") |> Enum.take(1)
     end
   end
 
-  @tag :skip
-  test "Unsplash.photos(id, :unlike)" do
+  test "Unsplash.photos(:unlike, id)" do
     use_cassette "unlike_photo" do
-      assert is_list Unsplash.photos("0XR2s9D3PLI", :unlike) |> Enum.take(1)
+      assert Unsplash.photos(:unlike, "0XR2s9D3PLI")
     end
   end
 
   # Users
-  @tag :skip
   test "Unsplash.me" do
     use_cassette "me" do
       assert is_list Unsplash.me |> Enum.to_list
     end
   end
 
-  @tag :skip
   test "Unsplash.update_me" do
     use_cassette "update_me" do
       assert is_list Unsplash.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list
@@ -125,21 +124,18 @@ defmodule UnsplashTest do
   end
 
 
-  @tag :skip
   test "Unsplash.users(username)" do
     use_cassette "users_username" do
       assert is_list Unsplash.users("believenyaself") |> Enum.to_list
     end
   end
 
-  @tag :skip
   test "Unsplash.users(username, :photos)" do
     use_cassette "users_username_photos" do
       assert is_list Unsplash.users("believenyaself", :photos) |> Enum.to_list
     end
   end
 
-  @tag :skip
   test "Unsplash.users(username, :likes)" do
     use_cassette "users_username_likes" do
       assert is_list Unsplash.users("believenyaself", :likes) |> Enum.to_list
