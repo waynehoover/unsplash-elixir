@@ -169,11 +169,11 @@ defmodule Unsplash do
 
   Requires the `write_photos` scope
 
-  This currently is broken
+  This currently is broken, with error "Photo is invalid."
   """
   def upload_photo(photo) do
     { :ok, file } = File.read(photo)
-    Api.post!("/photos", "{\"photo\":#{file}}").body
+    Api.post!("/photos", {:form, [photo: file]}, ["Content-type": "multipart/form-data;"], [recv_timeout: 30000]).body
     |> Poison.decode!
   end
 

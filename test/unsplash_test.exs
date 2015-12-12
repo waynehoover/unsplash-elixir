@@ -90,10 +90,9 @@ defmodule UnsplashTest do
   end
 
   # Upload Photo
-  @tag :skip
   test "Unsplash.upload_photo(path)" do
     use_cassette "upload_photo" do
-      assert is_list Unsplash.upload_photo(fixture_path("image.png")) |> Enum.take(1)
+      assert is_list Unsplash.upload_photo(fixture_path("photo.jpg")) |> Enum.take(1)
     end
   end
 
