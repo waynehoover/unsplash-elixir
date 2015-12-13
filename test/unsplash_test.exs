@@ -100,15 +100,15 @@ defmodule UnsplashTest do
   end
 
   # Like photos
-  test "Unsplash.photos(:like, id)" do
+  test "Unsplash.photos(id, :like)" do
     use_cassette "like_photo" do
-      assert is_list Unsplash.photos(:like, "0XR2s9D3PLI") |> Enum.take(1)
+      assert is_list Unsplash.photos("0XR2s9D3PLI", :like) |> Enum.take(1)
     end
   end
 
-  test "Unsplash.photos(:unlike, id)" do
+  test "Unsplash.photos(id, :unlike)" do
     use_cassette "unlike_photo" do
-      assert Unsplash.photos(:unlike, "0XR2s9D3PLI")
+      assert Unsplash.photos("0XR2s9D3PLI", :unlike)
     end
   end
 

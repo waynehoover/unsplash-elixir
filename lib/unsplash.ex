@@ -125,6 +125,29 @@ defmodule Unsplash do
   end
 
   @doc ~S"""
+  POST /photos/:id/like
+
+  Args:
+    * `id` - the photo id
+
+  Requires the `write_likes` scope
+  """
+  def photos(id, :like) when is_binary(id) do
+    Api.post!("/photos/#{id}/like", []).body
+    |> Poison.decode!
+  end
+
+  @doc ~S"""
+  DELETE /photos/:id/like
+
+  Args:
+    * `id` - the photo id
+  """
+  def photos(id, :unlike) when is_binary(id) do
+    Api.delete!("/photos/#{id}/like").status_code
+  end
+
+  @doc ~S"""
   GET /photos/:id
 
   Args:
@@ -139,29 +162,6 @@ defmodule Unsplash do
   def photos(id, opts) when is_binary(id) do
     params = build_params([:w, :h, :rect, :per_page, :page], opts)
     ResultStream.new("/photos/#{id}?#{params}")
-  end
-
-  @doc ~S"""
-  POST /photos/:id/like
-
-  Args:
-    * `id` - the photo id
-
-  Requires the `write_likes` scope
-  """
-  def photos(:like, id) when is_binary(id) do
-    Api.post!("/photos/#{id}/like", []).body
-    |> Poison.decode!
-  end
-
-  @doc ~S"""
-  DELETE /photos/:id/like
-
-  Args:
-    * `id` - the photo id
-  """
-  def photos(:unlike, id) when is_binary(id) do
-    Api.delete!("/photos/#{id}/like").status_code
   end
 
   @doc ~S"""
