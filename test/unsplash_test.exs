@@ -89,9 +89,6 @@ defmodule UnsplashTest do
     end
   end
 
-  @tag :skip
-  # Skip this for new because of bug in VCR: https://github.com/parroty/exvcr/issues/34
-  # Manually tested to work.
   # Upload Photo
   test "Unsplash.upload_photo(path)" do
     use_cassette "upload_photo" do
