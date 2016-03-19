@@ -1,20 +1,18 @@
 defmodule Unsplash.ResultStream do
   alias Unsplash.Api
 
-  # Can
-
   def new(url) do
     Stream.resource(
       fn -> fetch_page(url) end,
       &process_page/1,
-      fn _ -> end
+      fn _ -> true end
     )
   end
 
   defp fetch_page(url) do
     response = Api.get!(url)
     items = Poison.decode!(response.body)
-    links = parse_links(response.headers["Link"])
+    links = response.headers |> Enum.into(%{}) |> Map.get("Link") |> parse_links
 
     {items, links["next"]}
   end

@@ -1,7 +1,7 @@
 defmodule Unsplash.OAuth do
   @moduledoc ~S"""
   ## Authorization
-  `Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos write_likes"`
+  `Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos write_likes read_collections write_collections"
   `Unsplash.OAuth.authorize!(code: auth_code_from_the_callback_above)`
 
   Now all calls will be authorized.
@@ -28,15 +28,17 @@ defmodule Unsplash.OAuth do
   The `scope` option should be space seperated string of requested scopes.
 
   Possible scopes:
-    * `public` All public actions (default)
+    * `public` Default. Read public data.
     * `read_user` Access user’s private data.
     * `write_user`  Update the user’s profile.
     * `read_photos` Read private data from the user’s photos.
     * `write_photos`  Upload photos on the user’s behalf.
-    * `write_likes` Like photos on a the user`s behalf.
+    * `write_likes` Like or unlike a photo on the user’s behalf
+    * `read_collections`  View a user’s private collections.
+    * `write_collections` Create and update a user’s collections.
 
   ## Examples
-    iex> url = Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos write_likes"
+    iex> url = Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos write_likes read_collections write_collections"
     iex> is_binary(url)
     true
 

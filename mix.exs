@@ -4,8 +4,8 @@ defmodule Unsplash.Mixfile do
   def project do
     [
       app: :unsplash,
-      version: "0.3.0",
-      elixir: "~> 1.1",
+      version: "0.4.0",
+      elixir: "~> 1.2",
       description: "Unsplash API in Elixir",
       source_url: "https://github.com/waynehoover/unsplash-elixir",
       homepage_url: "https://github.com/waynehoover/unsplash-elixir",
@@ -24,12 +24,12 @@ defmodule Unsplash.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.8.0"},
-      {:poison, "~> 1.5"},
-      {:oauth2, "~> 0.5"},
-      {:earmark, "~> 0.1", only: :dev},
-      {:ex_doc, "~> 0.11", only: :dev},
-      {:exvcr, github: "parroty/exvcr", only: [:dev, :test]}
+      {:httpoison, "0.8.1"},
+      {:poison, "~> 1.5.2"},
+      {:oauth2, "~> 0.6.0"},
+      {:earmark, "~> 0.2.1", only: :dev},
+      {:ex_doc, "~> 0.11.4", only: :dev},
+      {:exvcr, "~> 0.7.1", only: [:test, :dev]}
     ]
   end
 

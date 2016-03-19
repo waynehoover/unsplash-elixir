@@ -208,31 +208,136 @@ defmodule Unsplash do
   end
 
   @doc ~S"""
-  GET /curated_batches
+  GET /collections
   """
-  def curated_batches do
-    ResultStream.new("/curated_batches")
+  def collections do
+    ResultStream.new("/collections")
   end
 
   @doc ~S"""
-  GET /curated_batches/:id
-
-  Args:
-    * `id` - The curated batch ID
+    GET /collections/curated
   """
-  def curated_batches(id) do
-    ResultStream.new("/curated_batches/#{id}")
+  def curated_collections do
+    ResultStream.new("/collections/curated")
   end
 
   @doc ~S"""
-  GET /curated_batch/:id/photos
+  GET /collections/:id
 
   Args:
-    * `id` - The curated batch ID
+    * `id` - The collections ID
   """
-  def curated_batches(id, :photos, opts \\ []) do
-    params = build_params([:per_page, :page], opts)
-    ResultStream.new("/curated_batches/#{id}/photos?#{params}")
+  def collections(id) do
+    ResultStream.new("/collections/#{id}")
+  end
+
+  @doc ~S"""
+  GET /collections/curated/:id
+
+  Args:
+    * `id` - The collections ID
+  """
+  def curated_collections(id) do
+    ResultStream.new("/collections/curated/#{id}")
+  end
+
+  @doc ~S"""
+  GET /collections/:id/photos
+
+  Args:
+    * `id` - The collections ID
+  """
+  def collections(id, :photos) do
+    ResultStream.new("/collections/#{id}/photos")
+  end
+
+
+  @doc ~S"""
+  GET /collections/:id/photos
+
+  Args:
+    * `id` - The collections ID
+  """
+  def curated_collections(id, :photos) do
+    ResultStream.new("/collections/currated/#{id}/photos")
+  end
+
+  @doc ~S"""
+  POST /collections
+
+  Args:
+    * `opts` - Keyword list of options
+
+  Options:
+    * `title` - The title of the collection. (Required.)
+    * `description` - The collection’s description. (Optional.)
+    * `private` - Whether to make this collection private. (Optional; default false).
+
+  Requires `write_collections` scope
+  """
+  def create_collection(opts \\ []) do
+    params = opts |> Keyword.take([:title, :description, :private])
+                  |> Enum.into(%{})
+                  |> Poison.encode!
+    Api.post!("/collections", params).body |> Poison.decode!
+  end
+
+  @doc ~S"""
+  PUT /collections/:id
+
+  Args:
+    * `opts` - Keyword list of options
+
+  Options:
+    * `title` - The title of the collection. (Required.)
+    * `description` - The collection’s description. (Optional.)
+    * `private` - Whether to make this collection private. (Optional; default false).
+
+  Requires `write_collections` scope
+  """
+  def update_collection(id, opts \\ []) do
+    params = opts |> Keyword.take([:title, :description, :private])
+                  |> Enum.into(%{})
+                  |> Poison.encode!
+    Api.put!("/collections/#{id}", params).body |> Poison.decode!
+  end
+
+
+  @doc ~S"""
+  DELETE /collections/:id
+
+  Requires `write_collections` scope
+  """
+  def delete_collection(id) do
+    Api.delete!("/collections/#{id}").body |> Poison.decode!
+  end
+
+  @doc ~S"""
+  POST /collections/:collection_id/add
+
+  Args:
+    * `collection_id` - The collection’s ID. Required.
+    * `photo_id` - The photo’s ID. Required.
+
+  Requires `write_collections` scope
+  """
+  def collection_add_photo(id, photo_id) do
+    params = %{photo_id: photo_id} |> Poison.decode!
+    Api.post!("/collections/#{id}/add", params).body |> Poison.decode!
+  end
+
+  @doc ~S"""
+  POST /collections/:collection_id/add
+
+  Args:
+    * `collection_id` - The collection’s ID. Required.
+    * `photo_id` - The photo’s ID. Required.
+
+  Requires `write_collections` scope
+  """
+  def collection_remove_photo(id, photo_id) do
+    params = %{photo_id: photo_id} |> Poison.decode!
+    Api.delete!("/collections/#{id}/remove", params).body |> Poison.decode!
   end
 
   @doc ~S"""

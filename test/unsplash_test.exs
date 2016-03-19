@@ -9,39 +9,49 @@ defmodule UnsplashTest do
     ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
     ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
     # dummy token
-    Unsplash.OAuth.store_token "cc89af8c25e6e7827f4c36ff48a8c12642a2b8c088616f69937ce2064924e4b2"
+    Unsplash.OAuth.store_token "e64ed2fb14b1331ff75b30a00bafbf432aaa2e8e971e5e5f1422e6c8c9e3577b"
     HTTPoison.start
   end
 
   # Categories
   test "Unsplash.categories" do
     use_cassette "categories" do
-      assert is_list (Unsplash.categories |> Enum.to_list)
+      response = Unsplash.categories |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   test "Unsplash.categories(id)" do
     use_cassette "categories_id" do
-      assert is_list (Unsplash.categories("2") |> Enum.to_list)
+      response = Unsplash.categories("2") |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   test "Unsplash.categories(id, :photos)" do
     use_cassette "categories_id_photos" do
-      assert is_list (Unsplash.categories("2", :photos) |> Enum.take(1))
+      response = Unsplash.categories("2", :photos) |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   # Photos
   test "Unsplash.photos(:all)" do
     use_cassette "photos" do
-      assert is_list Unsplash.photos(:all) |> Enum.take(1)
+      response = Unsplash.photos(:all) |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   test "Unsplash.photos(:search, opts)" do
     use_cassette "photos_search" do
-      assert is_list Unsplash.photos(:search, query: "Austin", catgeroy: "2") |> Enum.take(1)
+      response = Unsplash.photos(:search, query: "nature") |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
@@ -53,91 +63,141 @@ defmodule UnsplashTest do
 
   test "Unsplash.photos(:random, opts)" do
     use_cassette "photos_random" do
-      assert is_list Unsplash.photos(:random, query: "Austin", catgeroy: "2", w: 200, h: 200, ) |> Enum.take(1)
+      response = Unsplash.photos(:random, query: "nature", w: 200, h: 200, ) |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   test "Unsplash.photos(id, opts)" do
     use_cassette "photos_id" do
-      assert is_list Unsplash.photos("0XR2s9D3PLI", rect: "4,4,200,200") |> Enum.to_list
+      response = Unsplash.photos("0XR2s9D3PLI", rect: "4,4,200,200") |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   # Stats
   test "Unsplash.stats" do
     use_cassette "stats" do
-      assert is_list Unsplash.stats |> Enum.to_list
+      response = Unsplash.stats |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  # Curated Batches
-  test "Unsplash.curated_batches" do
-    use_cassette "curated_batches" do
-      assert is_list Unsplash.curated_batches |> Enum.take(1)
+  # Collections
+  test "Unsplash.collections" do
+    use_cassette "collections" do
+      response = Unsplash.collections |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  test "Unsplash.curated_batches(id)" do
-    use_cassette "curated_batches_id" do
-      assert is_list Unsplash.curated_batches("90") |> Enum.take(1)
+  test "Unsplash.curated_collections" do
+    use_cassette "curated_collections" do
+      response = Unsplash.curated_collections |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  test "Unsplash.curated_batches(id, :photos)" do
-    use_cassette "curated_batches_id_photos" do
-      assert is_list Unsplash.curated_batches("90", :photos) |> Enum.take(1)
+  test "Unsplash.collections(id)" do
+    use_cassette "collections_id" do
+      response = Unsplash.collections("103") |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
+    end
+  end
+
+  test "Unsplash.curated_collections(id)" do
+    use_cassette "curated_collections_id" do
+      response = Unsplash.curated_collections("103") |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
+    end
+  end
+
+  test "Unsplash.collections(id, :photos)" do
+    use_cassette "collections_id_photos" do
+      response = Unsplash.collections("103", :photos) |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
+    end
+  end
+
+  test "Unsplash.curated_collections(id, :photos)" do
+    use_cassette "curated_collections_id_photos" do
+      response = Unsplash.curated_collections("103", :photos) |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   # Upload Photo
   test "Unsplash.upload_photo(path)" do
     use_cassette "upload_photo" do
-      assert is_list Unsplash.upload_photo(fixture_path("photo.jpg")) |> Enum.take(1)
+      response = Unsplash.upload_photo(fixture_path("photo.jpg")) |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   # Like photos
   test "Unsplash.photos(id, :like)" do
     use_cassette "like_photo" do
-      assert is_list Unsplash.photos("0XR2s9D3PLI", :like) |> Enum.take(1)
+      response = Unsplash.photos("0XR2s9D3PLI", :like) |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   test "Unsplash.photos(id, :unlike)" do
     use_cassette "unlike_photo" do
-      assert Unsplash.photos("0XR2s9D3PLI", :unlike)
+      response = Unsplash.photos("0XR2s9D3PLI", :unlike)
+      assert response
     end
   end
 
   # Users
   test "Unsplash.me" do
     use_cassette "me" do
-      assert is_list Unsplash.me |> Enum.to_list
+      response = Unsplash.me |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   test "Unsplash.update_me" do
     use_cassette "update_me" do
-      assert is_list Unsplash.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list
+      response = Unsplash.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-
   test "Unsplash.users(username)" do
     use_cassette "users_username" do
-      assert is_list Unsplash.users("believenyaself") |> Enum.to_list
+      response = Unsplash.users("believenyaself") |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   test "Unsplash.users(username, :photos)" do
     use_cassette "users_username_photos" do
-      assert is_list Unsplash.users("believenyaself", :photos) |> Enum.to_list
+      response = Unsplash.users("believenyaself", :photos) |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
   test "Unsplash.users(username, :likes)" do
     use_cassette "users_username_likes" do
-      assert is_list Unsplash.users("believenyaself", :likes) |> Enum.to_list
+      response = Unsplash.users("believenyaself", :likes) |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
