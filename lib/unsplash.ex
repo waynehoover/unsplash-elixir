@@ -144,7 +144,12 @@ defmodule Unsplash do
     * `id` - the photo id
   """
   def photos(id, :unlike) when is_binary(id) do
-    Api.delete!("/photos/#{id}/like").status_code
+    result = Api.delete!("/photos/#{id}/like").body
+    if result != "" do
+      result |> Poison.decode!
+    else
+      []
+    end
   end
 
   @doc ~S"""

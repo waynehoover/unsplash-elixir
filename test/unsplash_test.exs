@@ -9,7 +9,8 @@ defmodule UnsplashTest do
     ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
     ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
     # dummy token
-    Unsplash.OAuth.store_token "9fc2ea9b2884cfd93daf670f01328d7058b7485553d23370c1b6df6346e20d08"
+    Unsplash.OAuth.authorize! code: "300c1ea24162f37721f2af7af9c63ff704e7f6071b155ccc007638cf96694ef3"
+    #Unsplash.OAuth.store_token "93e02871bbb70795c80871ebbca1f5c43ca3ba2217252cc0ee27a7fc2475262d"
     HTTPoison.start
   end
 
@@ -144,7 +145,7 @@ defmodule UnsplashTest do
     end
   end
 
-  # Like photos
+  # Like / Unlike photos
   test "Unsplash.photos(id, :like)" do
     use_cassette "like_photo" do
       response = Unsplash.photos("0XR2s9D3PLI", :like) |> Enum.to_list
@@ -157,6 +158,7 @@ defmodule UnsplashTest do
     use_cassette "unlike_photo" do
       response = Unsplash.photos("0XR2s9D3PLI", :unlike)
       assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
@@ -171,7 +173,7 @@ defmodule UnsplashTest do
 
   test "Unsplash.update_me" do
     use_cassette "update_me" do
-      response = Unsplash.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list
+      response = Unsplash.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir-#{Enum.take_random(?a..?z, 5)}@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end

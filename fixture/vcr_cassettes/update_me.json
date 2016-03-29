@@ -1,7 +1,7 @@
 [
   {
     "request": {
-      "body": "{\"url\":\"http://elixir-lang.org/\",\"location\":\"São Paulo\",\"last_name\":\"Rocks\",\"instagram_username\":\"elixirlang\",\"first_name\":\"Elixir\",\"email\":\"elixir@elixir-lang.org\",\"bio\":\"Elixir is a dynamic, functional language designed for building scalable and maintainable applications.\"}",
+      "body": "{\"url\":\"http://elixir-lang.org/\",\"location\":\"São Paulo\",\"last_name\":\"Rocks\",\"instagram_username\":\"elixirlang\",\"first_name\":\"Elixir\",\"email\":\"elixir-rkexg@elixir-lang.org\",\"bio\":\"Elixir is a dynamic, functional language designed for building scalable and maintainable applications.\"}",
       "headers": {
         "Accept-Version": "v1",
         "Authorization": "Client-ID client_id",
@@ -13,26 +13,27 @@
       "url": "https://api.unsplash.com/me"
     },
     "response": {
-      "body": "{\"errors\":[\"OAuth error: The access token is invalid\"]}",
+      "body": "{\"username\":\"blissofbeing\",\"first_name\":\"Elixir\",\"last_name\":\"Rocks\",\"portfolio_url\":\"http://elixir-lang.org/\",\"downloads\":0,\"profile_image\":{\"small\":\"https://images.unsplash.com/placeholder-avatars/extra-large.jpg?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=32\\u0026w=32\\u0026s=46caf91cf1f90b8b5ab6621512f102a8\",\"medium\":\"https://images.unsplash.com/placeholder-avatars/extra-large.jpg?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=64\\u0026w=64\\u0026s=a8f67c4239956417401bf39b50c928cb\",\"large\":\"https://images.unsplash.com/placeholder-avatars/extra-large.jpg?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=128\\u0026w=128\\u0026s=ec3c56c2ab6baef5d748cb58ccbc0efe\"},\"uid\":\"3LSCJOjLm_M\",\"bio\":\"Elixir is a dynamic, functional language designed for building scalable and maintainable applications.\",\"uploads_remaining\":9,\"instagram_username\":\"elixirlang\",\"location\":\"São Paulo\",\"email\":\"elixir-rkexg@elixir-lang.org\",\"links\":{\"self\":\"https://api.unsplash.com/users/blissofbeing\",\"html\":\"http://unsplash.com/blissofbeing\",\"photos\":\"https://api.unsplash.com/users/blissofbeing/photos\",\"likes\":\"https://api.unsplash.com/users/blissofbeing/likes\"}}",
       "headers": {
         "Server": "Cowboy",
-        "Date": "Tue, 29 Mar 2016 06:51:14 GMT",
+        "Date": "Tue, 29 Mar 2016 22:13:24 GMT",
         "Connection": "keep-alive",
-        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Request-Method": "*",
         "Access-Control-Allow-Headers": "*",
         "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
-        "Cache-Control": "no-cache",
-        "X-Request-Id": "7e5fb6b0-3e15-43a7-b215-32617ea6b7f6",
-        "X-Ratelimit-Limit": "100",
-        "X-Ratelimit-Remaining": "86",
-        "X-Runtime": "0.015550",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Etag": "W/\"0892d0e1989c9fc54e1c7f21e95c97ce\"",
+        "X-Request-Id": "2f3dc12b-718c-4bdd-9cec-e7db98aded86",
+        "X-Ratelimit-Limit": "1000000",
+        "X-Ratelimit-Remaining": "918266",
+        "X-Runtime": "0.271687",
         "Strict-Transport-Security": "max-age=31536000",
-        "Content-Length": "55",
+        "Content-Length": "1226",
         "Via": "1.1 vegur"
       },
-      "status_code": 401,
+      "status_code": 200,
       "type": "ok"
     }
   }
