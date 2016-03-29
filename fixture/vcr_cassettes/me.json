@@ -1,0 +1,40 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/me"
+    },
+    "response": {
+      "body": "{\"username\":\"blissofbeing\",\"first_name\":\"Wayne\",\"last_name\":\"Hoover\",\"portfolio_url\":null,\"downloads\":0,\"profile_image\":{\"small\":\"https://images.unsplash.com/placeholder-avatars/extra-large.jpg?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=32\\u0026w=32\\u0026s=46caf91cf1f90b8b5ab6621512f102a8\",\"medium\":\"https://images.unsplash.com/placeholder-avatars/extra-large.jpg?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=64\\u0026w=64\\u0026s=a8f67c4239956417401bf39b50c928cb\",\"large\":\"https://images.unsplash.com/placeholder-avatars/extra-large.jpg?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=128\\u0026w=128\\u0026s=ec3c56c2ab6baef5d748cb58ccbc0efe\"},\"uid\":\"3LSCJOjLm_M\",\"bio\":null,\"uploads_remaining\":10,\"instagram_username\":null,\"location\":null,\"email\":\"w@waynehoover.com\",\"links\":{\"self\":\"https://api.unsplash.com/users/blissofbeing\",\"html\":\"http://unsplash.com/blissofbeing\",\"photos\":\"https://api.unsplash.com/users/blissofbeing/photos\",\"likes\":\"https://api.unsplash.com/users/blissofbeing/likes\"}}",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Tue, 29 Mar 2016 22:06:13 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Etag": "W/\"9221defc415c331bdb2335b89ccfa4ba\"",
+        "X-Request-Id": "0f67f329-c5d2-4108-a3ad-70048fc74e03",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "94",
+        "X-Runtime": "0.039659",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "1079",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
