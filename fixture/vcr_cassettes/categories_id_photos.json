@@ -1,0 +1,22 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/categories/2/photos?"
+    },
+    "response": {
+      "body": "timeout",
+      "headers": [],
+      "status_code": null,
+      "type": "error"
+    }
+  }
+]

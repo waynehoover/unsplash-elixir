@@ -1,0 +1,39 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/me"
+    },
+    "response": {
+      "body": "{\"errors\":[\"OAuth error: The access token is invalid\"]}",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Sat, 19 Mar 2016 00:45:10 GMT",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "a48e27fb-ec68-4b8c-a366-5f068d1f70cd",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "86",
+        "X-Runtime": "0.013912",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "55",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]

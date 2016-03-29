@@ -9,7 +9,7 @@ defmodule UnsplashTest do
     ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
     ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
     # dummy token
-    Unsplash.OAuth.store_token "e64ed2fb14b1331ff75b30a00bafbf432aaa2e8e971e5e5f1422e6c8c9e3577b"
+    Unsplash.OAuth.store_token "a62335d3d25ecb7e7654039b934a402dcdd2d89c17f887164051caeea8e568c7"
     HTTPoison.start
   end
 

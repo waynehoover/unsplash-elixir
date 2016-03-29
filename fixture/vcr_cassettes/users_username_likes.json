@@ -1,0 +1,42 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/users/believenyaself/likes?"
+    },
+    "response": {
+      "body": "[]",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Sat, 19 Mar 2016 00:47:16 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "X-Total": "0",
+        "X-Per-Page": "10",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Etag": "W/\"d751713988987e9331980363e24189ce\"",
+        "X-Request-Id": "c5ed3285-7600-4822-b303-57d9ba98f3a5",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "71",
+        "X-Runtime": "0.028580",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "2",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

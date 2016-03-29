@@ -1,0 +1,40 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/categories"
+    },
+    "response": {
+      "body": "[{\"id\":2,\"title\":\"Buildings\",\"photo_count\":15172,\"links\":{\"self\":\"https://api.unsplash.com/categories/2\",\"photos\":\"https://api.unsplash.com/categories/2/photos\"}},{\"id\":3,\"title\":\"Food \\u0026 Drink\",\"photo_count\":2044,\"links\":{\"self\":\"https://api.unsplash.com/categories/3\",\"photos\":\"https://api.unsplash.com/categories/3/photos\"}},{\"id\":4,\"title\":\"Nature\",\"photo_count\":37009,\"links\":{\"self\":\"https://api.unsplash.com/categories/4\",\"photos\":\"https://api.unsplash.com/categories/4/photos\"}},{\"id\":8,\"title\":\"Objects\",\"photo_count\":8777,\"links\":{\"self\":\"https://api.unsplash.com/categories/8\",\"photos\":\"https://api.unsplash.com/categories/8/photos\"}},{\"id\":6,\"title\":\"People\",\"photo_count\":12055,\"links\":{\"self\":\"https://api.unsplash.com/categories/6\",\"photos\":\"https://api.unsplash.com/categories/6/photos\"}},{\"id\":7,\"title\":\"Technology\",\"photo_count\":1011,\"links\":{\"self\":\"https://api.unsplash.com/categories/7\",\"photos\":\"https://api.unsplash.com/categories/7/photos\"}}]",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Sat, 19 Mar 2016 00:45:17 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Etag": "W/\"0af5feb47f791581be6acd6d64e84722\"",
+        "X-Request-Id": "acdb7d52-0ecc-416e-a8bf-1a4799fd7674",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "83",
+        "X-Runtime": "0.014914",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "971",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

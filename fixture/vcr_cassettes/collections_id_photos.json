@@ -1,0 +1,39 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/collections/103/photos"
+    },
+    "response": {
+      "body": "{\"errors\":[\"Couldn't find Collection with 'id'=103\"]}",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Sat, 19 Mar 2016 00:47:14 GMT",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "981ef9aa-aa0f-4108-ad72-2984691db785",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "72",
+        "X-Runtime": "0.016382",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "53",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 404,
+      "type": "ok"
+    }
+  }
+]
