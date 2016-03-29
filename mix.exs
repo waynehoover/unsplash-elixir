@@ -24,12 +24,12 @@ defmodule Unsplash.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "0.8.1"},
-      {:poison, "~> 1.5.2"},
+      {:httpoison, "~> 0.8.2"},
+      {:poison, "~> 2.1.0"},
       {:oauth2, "~> 0.6.0"},
       {:earmark, "~> 0.2.1", only: :dev},
       {:ex_doc, "~> 0.11.4", only: :dev},
-      {:exvcr, "~> 0.7.1", only: [:test, :dev]}
+      {:exvcr, "~> 0.7.2", only: [:test, :dev]}
     ]
   end
 
