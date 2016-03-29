@@ -9,7 +9,7 @@ defmodule UnsplashTest do
     ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
     ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
     # dummy token
-    Unsplash.OAuth.store_token "a62335d3d25ecb7e7654039b934a402dcdd2d89c17f887164051caeea8e568c7"
+    Unsplash.OAuth.store_token "9fc2ea9b2884cfd93daf670f01328d7058b7485553d23370c1b6df6346e20d08"
     HTTPoison.start
   end
 
@@ -105,7 +105,7 @@ defmodule UnsplashTest do
 
   test "Unsplash.collections(id)" do
     use_cassette "collections_id" do
-      response = Unsplash.collections("103") |> Enum.to_list
+      response = Unsplash.collections("175361") |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
@@ -121,7 +121,7 @@ defmodule UnsplashTest do
 
   test "Unsplash.collections(id, :photos)" do
     use_cassette "collections_id_photos" do
-      response = Unsplash.collections("103", :photos) |> Enum.to_list
+      response = Unsplash.collections("175361", :photos) |> Enum.at(0)
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end

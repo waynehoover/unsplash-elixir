@@ -13,10 +13,28 @@
       "url": "https://api.unsplash.com/categories/2"
     },
     "response": {
-      "body": "connect_timeout",
-      "headers": [],
-      "status_code": null,
-      "type": "error"
+      "body": "{\"id\":2,\"title\":\"Buildings\",\"photo_count\":15841,\"links\":{\"self\":\"https://api.unsplash.com/categories/2\",\"photos\":\"https://api.unsplash.com/categories/2/photos\"}}",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Tue, 29 Mar 2016 06:51:13 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Etag": "W/\"6a7d5b0225d50b5c6ce2ead398aef0cd\"",
+        "X-Request-Id": "f6a8d902-13e7-4148-829b-3f6e51560eac",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "89",
+        "X-Runtime": "0.018870",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "161",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
     }
   }
 ]

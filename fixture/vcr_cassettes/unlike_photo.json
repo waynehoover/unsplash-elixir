@@ -13,10 +13,27 @@
       "url": "https://api.unsplash.com/photos/0XR2s9D3PLI/like"
     },
     "response": {
-      "body": "connect_timeout",
-      "headers": [],
-      "status_code": null,
-      "type": "error"
+      "body": "{\"errors\":[\"OAuth error: The access token is invalid\"]}",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Tue, 29 Mar 2016 06:51:14 GMT",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "8a10f594-19bd-4628-82a0-f59721f10e21",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "87",
+        "X-Runtime": "0.012436",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "55",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 401,
+      "type": "ok"
     }
   }
 ]

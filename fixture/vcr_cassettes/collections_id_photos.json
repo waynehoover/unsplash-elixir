@@ -10,29 +10,32 @@
       "method": "get",
       "options": [],
       "request_body": "",
-      "url": "https://api.unsplash.com/collections/103/photos"
+      "url": "https://api.unsplash.com/collections/175361/photos"
     },
     "response": {
-      "body": "{\"errors\":[\"Couldn't find Collection with 'id'=103\"]}",
+      "body": "[{\"id\":\"rMmibFe4czY\",\"width\":3456,\"height\":5184,\"color\":\"#D9E8EC\",\"likes\":711,\"liked_by_user\":false,\"user\":{\"id\":\"vwORNQCPONY\",\"username\":\"jeremy_thomas\",\"name\":\"Jeremy Thomas\",\"profile_image\":{\"small\":\"https://images.unsplash.com/profile-1459200640943-c6a8af9d5e8c?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=32\\u0026w=32\\u0026s=fc12614015941bfe4e85273438e9a756\",\"medium\":\"https://images.unsplash.com/profile-1459200640943-c6a8af9d5e8c?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=64\\u0026w=64\\u0026s=824249e4b57384a12a117ac4d93745c3\",\"large\":\"https://images.unsplash.com/profile-1459200640943-c6a8af9d5e8c?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=faces\\u0026fit=crop\\u0026h=128\\u0026w=128\\u0026s=6659b16e6d7c3437aa3e81a1c811f6fc\"},\"links\":{\"self\":\"https://api.unsplash.com/users/jeremy_thomas\",\"html\":\"http://unsplash.com/jeremy_thomas\",\"photos\":\"https://api.unsplash.com/users/jeremy_thomas/photos\",\"likes\":\"https://api.unsplash.com/users/jeremy_thomas/likes\"}},\"urls\":{\"raw\":\"https://images.unsplash.com/photo-1454817481404-7e84c1b73b4a\",\"full\":\"https://images.unsplash.com/photo-1454817481404-7e84c1b73b4a?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=entropy\\u0026s=5f4cef962c8ddea0da93e59299350831\",\"regular\":\"https://images.unsplash.com/photo-1454817481404-7e84c1b73b4a?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=entropy\\u0026w=1080\\u0026fit=max\\u0026s=754ba511edc0c5a70d72bb11f399aec2\",\"small\":\"https://images.unsplash.com/photo-1454817481404-7e84c1b73b4a?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=entropy\\u0026w=400\\u0026fit=max\\u0026s=b5812832a5e3247ac362d46c24517f28\",\"thumb\":\"https://images.unsplash.com/photo-1454817481404-7e84c1b73b4a?ixlib=rb-0.3.5\\u0026q=80\\u0026fm=jpg\\u0026crop=entropy\\u0026w=200\\u0026fit=max\\u0026s=93a18bc59c764748a4c987f2030a3227\"},\"categories\":[{\"id\":6,\"title\":\"People\",\"photo_count\":12551,\"links\":{\"self\":\"https://api.unsplash.com/categories/6\",\"photos\":\"https://api.unsplash.com/categories/6/photos\"}}],\"links\":{\"self\":\"https://api.unsplash.com/photos/rMmibFe4czY\",\"html\":\"http://unsplash.com/photos/rMmibFe4czY\",\"download\":\"http://unsplash.com/photos/rMmibFe4czY/download\"}}]",
       "headers": {
         "Server": "Cowboy",
-        "Date": "Sat, 19 Mar 2016 00:47:14 GMT",
+        "Date": "Tue, 29 Mar 2016 06:55:31 GMT",
         "Connection": "keep-alive",
-        "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Request-Method": "*",
         "Access-Control-Allow-Headers": "*",
         "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
-        "Cache-Control": "no-cache",
-        "X-Request-Id": "981ef9aa-aa0f-4108-ad72-2984691db785",
-        "X-Ratelimit-Limit": "100",
-        "X-Ratelimit-Remaining": "72",
-        "X-Runtime": "0.016382",
+        "X-Total": "1",
+        "X-Per-Page": "10",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Etag": "W/\"b5e26c2307bc15d251ca3e1d22619e97\"",
+        "X-Request-Id": "27fb2875-7d53-48b1-90c5-a07c1afc14c7",
+        "X-Ratelimit-Limit": "1000000",
+        "X-Ratelimit-Remaining": "752277",
+        "X-Runtime": "0.103033",
         "Strict-Transport-Security": "max-age=31536000",
-        "Content-Length": "53",
+        "Content-Length": "2193",
         "Via": "1.1 vegur"
       },
-      "status_code": 404,
+      "status_code": 200,
       "type": "ok"
     }
   }

@@ -15,10 +15,27 @@
       "url": "https://api.unsplash.com/photos"
     },
     "response": {
-      "body": "timeout",
-      "headers": [],
-      "status_code": null,
-      "type": "error"
+      "body": "{\"errors\":[\"OAuth error: The access token is invalid\"]}",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Tue, 29 Mar 2016 06:51:18 GMT",
+        "Connection": "keep-alive",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "no-cache",
+        "X-Request-Id": "af47b5a1-6e6c-435d-ab78-c473a2e3fda2",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "81",
+        "X-Runtime": "0.017986",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "55",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 401,
+      "type": "ok"
     }
   }
 ]

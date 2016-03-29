@@ -13,10 +13,28 @@
       "url": "https://api.unsplash.com/stats/total"
     },
     "response": {
-      "body": "timeout",
-      "headers": [],
-      "status_code": null,
-      "type": "error"
+      "body": "{\"photo_downloads\":79081411,\"batch_downloads\":55649630}",
+      "headers": {
+        "Server": "Cowboy",
+        "Date": "Tue, 29 Mar 2016 06:51:16 GMT",
+        "Connection": "keep-alive",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "max-age=7200, public",
+        "Content-Type": "application/json",
+        "Etag": "W/\"96904965e52a9d3c4ee1807834f17a36\"",
+        "X-Request-Id": "9a0a4c99-1f9e-4ea9-8b47-d66aff3ccbd0",
+        "X-Ratelimit-Limit": "100",
+        "X-Ratelimit-Remaining": "82",
+        "X-Runtime": "0.023345",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Content-Length": "55",
+        "Via": "1.1 vegur"
+      },
+      "status_code": 200,
+      "type": "ok"
     }
   }
 ]
