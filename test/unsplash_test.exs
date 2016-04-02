@@ -8,9 +8,9 @@ defmodule UnsplashTest do
   setup_all do
     ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
     ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
-    # dummy token
-    Unsplash.OAuth.authorize! code: "300c1ea24162f37721f2af7af9c63ff704e7f6071b155ccc007638cf96694ef3"
-    #Unsplash.OAuth.store_token "93e02871bbb70795c80871ebbca1f5c43ca3ba2217252cc0ee27a7fc2475262d"
+    # To run the tests needing authorization, without using VCR,
+    # follow the auth steps in the readme, and put the code you get back into the function below.
+    # Unsplash.OAuth.authorize! code: "code_goes_here"
     HTTPoison.start
   end
 
