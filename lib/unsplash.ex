@@ -52,20 +52,42 @@ defmodule Unsplash do
 
   Args:
     * `username` - the username string
+    * `w` - Profile image width in pixels.
+    * `h` - Profile image height in pixels.
   """
   def users(username) do
     ResultStream.new("/users/#{username}")
   end
 
+  @doc ~S"""
+  GET /users/:username/portfolio
+
+  Retrieve a single user’s portfolio link.
+
+  Args:
+    * `username` - The user’s username. Required.
+  """
+  def users(username, :portfolio) do
+    Api.get!("/users/#{username}/portfolio").body |> Poison.decode!
+  end
+
+  # Set default opts
   def users(_, _, opts \\ [])
+
   @doc ~S"""
   GET /users/:username/photos
 
   Args:
-    * `username` - the username string
+    * `username` The user’s username. Required.
+    * `page` Page number to retrieve. (Optional; default: 1)
+    * `per_page` Number of items per page. (Optional; default: 10)
+    * `order_by` How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
+    * `stats` how the stats for each user’s photo. (Optional; default: false)
+    * `resolution` The frequency of the stats. (Optional; default: “days”)
+    * `quantity` The amount of for each stat. (Optional; default: 30)
   """
   def users(username, :photos, opts) do
-    params = build_params([:per_page, :page], opts)
+    params = build_params([:per_page, :page, :order_by, :stats, :resolution, :quantity], opts)
     ResultStream.new("/users/#{username}/photos?#{params}")
   end
 
@@ -74,11 +96,37 @@ defmodule Unsplash do
 
   Args:
     * `username` - the username string
+    * `order_by` - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
   """
   def users(username, :likes, opts) do
-    params = build_params([:per_page, :page], opts)
+    params = build_params([:per_page, :page, :order_by], opts)
     ResultStream.new("/users/#{username}/likes?#{params}")
   end
+
+  @doc ~S"""
+  GET /users/:username/collections
+
+  Args:
+    * `username` - The user’s username. Required
+  """
+  def users(username, :collections, opts) do
+    params = build_params([:per_page, :page], opts)
+    ResultStream.new("/users/#{username}/collections?#{params}")
+  end
+
+  @doc ~S"""
+  GET /users/:username/statistics
+
+  Args:
+    * `username` -The user’s username. Required.
+    * `resolution`  -The frequency of the stats. (Optional; default: “days”)
+    * `quantity` -The amount of for each stat. (Optional; default: 30)
+  """
+  def users(username, :statistics, opts) do
+    params = build_params([:resolution, :quantity], opts)
+    ResultStream.new("/users/#{username}/statistics?#{params}")
+  end
+
 
   def photos(_, opts \\ [])
 

@@ -187,9 +187,17 @@ defmodule UnsplashTest do
     end
   end
 
+  test "Unsplash.users(username, :portfolio)" do
+    use_cassette "users_username_portfolio" do
+      response = Unsplash.users("believenyaself", :portfolio)
+      assert response |> Map.get("url")
+      refute response |> Enum.into(%{}) |> Map.get("errors")
+    end
+  end
+
   test "Unsplash.users(username, :photos)" do
     use_cassette "users_username_photos" do
-      response = Unsplash.users("believenyaself", :photos) |> Enum.at(0)
+      response = Unsplash.users("believenyaself", :photos, stats: true) |> Enum.at(0)
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
@@ -198,6 +206,22 @@ defmodule UnsplashTest do
   test "Unsplash.users(username, :likes)" do
     use_cassette "users_username_likes" do
       response = Unsplash.users("believenyaself", :likes) |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
+    end
+  end
+
+  test "Unsplash.users(username, :collections)" do
+    use_cassette "users_username_collections" do
+      response = Unsplash.users("believenyaself", :collections) |> Enum.to_list
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
+    end
+  end
+
+  test "Unsplash.users(username, :statistics)" do
+    use_cassette "users_username_statistics" do
+      response = Unsplash.users("believenyaself", :statistics) |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
