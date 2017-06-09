@@ -6,11 +6,10 @@ defmodule Unsplash do
   Those API results that are paginated will return a Stream in which you can resolve by using any Enum function. You can also pass in `per_page` and `page` keywords if you would like to do pagination manually. Max per_page is 30.
   """
 
-  alias Unsplash.ResultStream
-  alias Unsplash.Api
+  alias Unsplash.Utils.{API, ResultStream}
 
   def start(_type, _args) do
-    Unsplash.OAuth.start
+    Unsplash.Utils.OAuth.start
   end
 
   @doc ~S"""
@@ -44,97 +43,20 @@ defmodule Unsplash do
     params = opts |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
                   |> Enum.into(%{})
                   |> Poison.encode!
-     Api.put!("/me", params).body |> Poison.decode!
+     API.put!("/me", params).body |> Poison.decode!
   end
 
-  @doc ~S"""
-  GET /users/:username
-
-  Args:
-    * `username` - the username string
-    * `w` - Profile image width in pixels.
-    * `h` - Profile image height in pixels.
-  """
-  def users(username) do
-    ResultStream.new("/users/#{username}")
-  end
-
-  @doc ~S"""
-  GET /users/:username/portfolio
-
-  Retrieve a single user’s portfolio link.
-
-  Args:
-    * `username` - The user’s username. Required.
-  """
-  def users(username, :portfolio) do
-    Api.get!("/users/#{username}/portfolio").body |> Poison.decode!
-  end
-
-  # Set default opts
-  def users(_, _, opts \\ [])
-
-  @doc ~S"""
-  GET /users/:username/photos
-
-  Args:
-    * `username` The user’s username. Required.
-    * `page` Page number to retrieve. (Optional; default: 1)
-    * `per_page` Number of items per page. (Optional; default: 10)
-    * `order_by` How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
-    * `stats` how the stats for each user’s photo. (Optional; default: false)
-    * `resolution` The frequency of the stats. (Optional; default: “days”)
-    * `quantity` The amount of for each stat. (Optional; default: 30)
-  """
-  def users(username, :photos, opts) do
-    params = build_params([:per_page, :page, :order_by, :stats, :resolution, :quantity], opts)
-    ResultStream.new("/users/#{username}/photos?#{params}")
-  end
-
-  @doc ~S"""
-  GET /users/:username/likes
-
-  Args:
-    * `username` - the username string
-    * `order_by` - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
-  """
-  def users(username, :likes, opts) do
-    params = build_params([:per_page, :page, :order_by], opts)
-    ResultStream.new("/users/#{username}/likes?#{params}")
-  end
-
-  @doc ~S"""
-  GET /users/:username/collections
-
-  Args:
-    * `username` - The user’s username. Required
-  """
-  def users(username, :collections, opts) do
-    params = build_params([:per_page, :page], opts)
-    ResultStream.new("/users/#{username}/collections?#{params}")
-  end
-
-  @doc ~S"""
-  GET /users/:username/statistics
-
-  Args:
-    * `username` -The user’s username. Required.
-    * `resolution`  -The frequency of the stats. (Optional; default: “days”)
-    * `quantity` -The amount of for each stat. (Optional; default: 30)
-  """
-  def users(username, :statistics, opts) do
-    params = build_params([:resolution, :quantity], opts)
-    ResultStream.new("/users/#{username}/statistics?#{params}")
-  end
-
-
+  # Default options for all below
   def photos(_, opts \\ [])
 
   @doc ~S"""
   GET /photos
+
+  Args:
+    * `order_by` - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
   """
   def photos(:all, opts) do
-    params = build_params([:per_page, :page], opts)
+    params = build_params([:per_page, :page, :order_by], opts)
     ResultStream.new("/photos?#{params}")
   end
 
@@ -181,7 +103,7 @@ defmodule Unsplash do
   Requires the `write_likes` scope
   """
   def photos(id, :like) when is_binary(id) do
-    Api.post!("/photos/#{id}/like", []).body
+    API.post!("/photos/#{id}/like", []).body
     |> Poison.decode!
   end
 
@@ -192,7 +114,7 @@ defmodule Unsplash do
     * `id` - the photo id
   """
   def photos(id, :unlike) when is_binary(id) do
-    result = Api.delete!("/photos/#{id}/like").body
+    result = API.delete!("/photos/#{id}/like").body
     if result != "" do
       result |> Poison.decode!
     else
@@ -228,7 +150,7 @@ defmodule Unsplash do
   Thanks to https://stackoverflow.com/q/33557133/ for the solution on how to upload named files.
   """
   def upload_photo(photo) do
-    Api.post!("/photos", {:multipart, [{:file, photo, { ["form-data"], [name: "\"photo\"", filename: "\"#{photo}\""]},[]}]}, [], [recv_timeout: 30000]).body
+    API.post!("/photos", {:multipart, [{:file, photo, { ["form-data"], [name: "\"photo\"", filename: "\"#{photo}\""]},[]}]}, [], [recv_timeout: 30000]).body
     |> Poison.decode!
   end
 
@@ -332,7 +254,7 @@ defmodule Unsplash do
     params = opts |> Keyword.take([:title, :description, :private])
                   |> Enum.into(%{})
                   |> Poison.encode!
-    Api.post!("/collections", params).body |> Poison.decode!
+    API.post!("/collections", params).body |> Poison.decode!
   end
 
   @doc ~S"""
@@ -352,7 +274,7 @@ defmodule Unsplash do
     params = opts |> Keyword.take([:title, :description, :private])
                   |> Enum.into(%{})
                   |> Poison.encode!
-    Api.put!("/collections/#{id}", params).body |> Poison.decode!
+    API.put!("/collections/#{id}", params).body |> Poison.decode!
   end
 
 
@@ -362,7 +284,7 @@ defmodule Unsplash do
   Requires `write_collections` scope
   """
   def delete_collection(id) do
-    Api.delete!("/collections/#{id}").body |> Poison.decode!
+    API.delete!("/collections/#{id}").body |> Poison.decode!
   end
 
   @doc ~S"""
@@ -376,7 +298,7 @@ defmodule Unsplash do
   """
   def collection_add_photo(id, photo_id) do
     params = %{photo_id: photo_id} |> Poison.decode!
-    Api.post!("/collections/#{id}/add", params).body |> Poison.decode!
+    API.post!("/collections/#{id}/add", params).body |> Poison.decode!
   end
 
   @doc ~S"""
@@ -390,7 +312,7 @@ defmodule Unsplash do
   """
   def collection_remove_photo(id, photo_id) do
     params = %{photo_id: photo_id} |> Poison.decode!
-    Api.delete!("/collections/#{id}/remove", params).body |> Poison.decode!
+    API.delete!("/collections/#{id}/remove", params).body |> Poison.decode!
   end
 
   @doc ~S"""
@@ -400,7 +322,7 @@ defmodule Unsplash do
     ResultStream.new("/stats/total")
   end
 
-  defp build_params(params, opts) do
+  def build_params(params, opts) do
     opts |> Keyword.take([:per_page, :page | params]) |> URI.encode_query
   end
 end
