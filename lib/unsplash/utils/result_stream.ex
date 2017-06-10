@@ -1,6 +1,22 @@
 defmodule Unsplash.Utils.ResultStream do
   alias Unsplash.Utils.API
 
+  @doc ~S"""
+  Generates the URI. Given base URI optional_params, then given params.
+
+  ## Examples
+    iex> Unsplash.Utils.ResultStream.build_uri('/users/wayneph/photos', [:per_page], per_page: 30, not_valid: 'yes')
+    "/users/wayneph/photos?per_page=30"
+  """
+  def build_uri(url, optional_params, given_params) do
+    query = given_params |> Keyword.take(optional_params) |> URI.encode_query
+    "#{url}?#{query}"
+  end
+
+  def new(url, given_params, optional_params) do
+    build_uri(url, given_params, optional_params) |> new
+  end
+
   def new(url) do
     Stream.resource(
       fn -> fetch_page(url) end,

@@ -12,40 +12,6 @@ defmodule Unsplash do
     Unsplash.Utils.OAuth.start
   end
 
-  @doc ~S"""
-  GET /me
-
-  Requires `read_user` scope
-  """
-  def me do
-    ResultStream.new("/me")
-  end
-
-  @doc ~S"""
-  PUT /me
-
-  Args:
-    * `opts` - Keyword list of options
-
-  Options:
-    * `username` - Username.
-    * `first_name` - First name.
-    * `last_name` -Last name.
-    * `email` -Email.
-    * `url` -Portfolio/personal URL.
-    * `location` - Location.
-    * `bio` -About/bio.
-    * `instagram_username` - Instagram username.
-
-  Requires `write_user` scope
-  """
-  def update_me(opts \\ []) do
-    params = opts |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
-                  |> Enum.into(%{})
-                  |> Poison.encode!
-     API.put!("/me", params).body |> Poison.decode!
-  end
-
   # Default options for all below
   def photos(_, opts \\ [])
 
@@ -313,13 +279,6 @@ defmodule Unsplash do
   def collection_remove_photo(id, photo_id) do
     params = %{photo_id: photo_id} |> Poison.decode!
     API.delete!("/collections/#{id}/remove", params).body |> Poison.decode!
-  end
-
-  @doc ~S"""
-  GET /stats/total
-  """
-  def stats do
-    ResultStream.new("/stats/total")
   end
 
   def build_params(params, opts) do

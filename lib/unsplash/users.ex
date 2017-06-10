@@ -1,12 +1,5 @@
 defmodule Unsplash.Users do
   alias Unsplash.Utils.{API, ResultStream}
-
-  #Todo: extact into ResultStream.
-  def build_params(params, opts) do
-    #[:per_page, :page] are redundant and being passed in by calling function already most of the time.
-    opts |> Keyword.take([:per_page, :page | params]) |> URI.encode_query
-  end
-
   @doc ~S"""
   GET /users/:username
 
@@ -44,8 +37,8 @@ defmodule Unsplash.Users do
     * `quantity` The amount of for each stat. (Optional; default: 30)
   """
   def photos(username, opts \\ []) do
-    params = build_params([:per_page, :page, :order_by, :stats, :resolution, :quantity], opts)
-    ResultStream.new("/users/#{username}/photos?#{params}")
+    optional_params = [:per_page, :page, :order_by, :stats, :resolution, :quantity]
+    ResultStream.new("/users/#{username}/photos", optional_params, opts)
   end
 
   @doc ~S"""
@@ -56,8 +49,8 @@ defmodule Unsplash.Users do
     * `order_by` - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
   """
   def likes(username, opts \\ []) do
-    params = build_params([:per_page, :page, :order_by], opts)
-    ResultStream.new("/users/#{username}/likes?#{params}")
+    optional_params = [:per_page, :page, :order_by]
+    ResultStream.new("/users/#{username}/likes", optional_params, opts)
   end
 
   @doc ~S"""
@@ -67,8 +60,8 @@ defmodule Unsplash.Users do
     * `username` - The user’s username. Required
   """
   def collections(username, opts \\ []) do
-    params = build_params([:per_page, :page], opts)
-    ResultStream.new("/users/#{username}/collections?#{params}")
+    optional_params = [:per_page, :page]
+    ResultStream.new("/users/#{username}/collections", optional_params, opts)
   end
 
   @doc ~S"""
@@ -80,8 +73,42 @@ defmodule Unsplash.Users do
     * `quantity` -The amount of for each stat. (Optional; default: 30)
   """
   def statistics(username, opts \\ []) do
-    params = build_params([:resolution, :quantity], opts)
-    ResultStream.new("/users/#{username}/statistics?#{params}")
+    optional_params = [:resolution, :quantity]
+    ResultStream.new("/users/#{username}/statistics", optional_params, opts)
+  end
+
+  @doc ~S"""
+  GET /me
+
+  Requires `read_user` scope
+  """
+  def me do
+    ResultStream.new("/me")
+  end
+
+  @doc ~S"""
+  PUT /me
+
+  Args:
+    * `opts` - Keyword list of options
+
+  Options:
+    * `username` - Username.
+    * `first_name` - First name.
+    * `last_name` -Last name.
+    * `email` -Email.
+    * `url` -Portfolio/personal URL.
+    * `location` - Location.
+    * `bio` -About/bio.
+    * `instagram_username` - Instagram username.
+
+  Requires `write_user` scope
+  """
+  def update_me(opts \\ []) do
+    params = opts |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
+                  |> Enum.into(%{})
+                  |> Poison.encode!
+     API.put!("/me", params).body |> Poison.decode!
   end
 
 end

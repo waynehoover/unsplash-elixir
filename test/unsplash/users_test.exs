@@ -51,17 +51,17 @@ defmodule Unsplash.UsersTest do
   end
 
   # Current User Tests
-  test "Unsplash.me" do
+  test "Unsplash.Users.me" do
     use_cassette "me" do
-      response = Unsplash.me |> Enum.to_list
+      response = Unsplash.Users.me |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  test "Unsplash.update_me" do
+  test "Unsplash.Users.update_me" do
     use_cassette "update_me" do
-      response = Unsplash.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir-#{Enum.take_random(?a..?z, 5)}@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list
+      response = Unsplash.Users.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir-#{Enum.take_random(?a..?z, 5)}@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
