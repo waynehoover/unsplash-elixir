@@ -3,65 +3,73 @@ defmodule Unsplash.PhotosTest do
   use ExVCR.Mock, adapter: ExVCR.Adapter.Hackney
   import PathHelpers
 
-  test "Unsplash.photos(:all)" do
+  test "Unsplash.Photos.all" do
     use_cassette "photos" do
-      response = Unsplash.photos(:all) |> Enum.at(0)
+      response = Unsplash.Photos.all |> Enum.at(0)
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  test "Unsplash.photos(:search, opts)" do
-    use_cassette "photos_search" do
-      response = Unsplash.photos(:search, query: "nature") |> Enum.at(0)
+  test "Unsplash.Photos.curated" do
+    use_cassette "photos_curated" do
+      response = Unsplash.Photos.curated |> Enum.at(0)
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  test "Unsplash.photos(:search, per_page: 33)" do
-    use_cassette "photos_search_33_per_page" do
-      assert Enum.count(Unsplash.photos(:search, query: "nature", per_page: 30) |> Enum.take(33)) == 33
-    end
-  end
-
-  test "Unsplash.photos(:random, opts)" do
+  test "Unsplash.Photos.random(opts)" do
     use_cassette "photos_random" do
-      response = Unsplash.photos(:random, query: "nature", w: 200, h: 200, ) |> Enum.to_list
+      response = Unsplash.Photos.random(query: "nature", w: 200, h: 200, ) |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  test "Unsplash.photos(id, opts)" do
+  test "Unsplash.Photos.statistics(id)" do
+    use_cassette "photos_statistics" do
+      response = Unsplash.Photos.statistics("0XR2s9D3PLI") |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
+    end
+  end
+
+  test "Unsplash.Photos.download_link(id)" do
+    use_cassette "photos_download_link" do
+      response = Unsplash.Photos.download_link("0XR2s9D3PLI") |> Enum.at(0)
+      assert response
+      refute response |> Enum.into(%{}) |> Map.get("errors")
+    end
+  end
+
+  test "Unsplash.Photos.get(id, opts)" do
     use_cassette "photos_id" do
-      response = Unsplash.photos("0XR2s9D3PLI", rect: "4,4,200,200") |> Enum.to_list
+      response = Unsplash.Photos.get("0XR2s9D3PLI", rect: "4,4,200,200") |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  # Upload Photo
-  test "Unsplash.upload_photo(path)" do
-    use_cassette "upload_photo" do
-      response = Unsplash.upload_photo(fixture_path("photo.jpg")) |> Enum.to_list
+  test "Unsplash.Photos.Update(id, opts)" do
+    use_cassette "update_photo" do
+      response = Unsplash.Photos.update("0XR2s9D3PLI", [location: [name: "Bishop"]]) |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  # Like / Unlike photos
-  test "Unsplash.photos(id, :like)" do
+  test "Unsplash.Photos.like(id)" do
     use_cassette "like_photo" do
-      response = Unsplash.photos("0XR2s9D3PLI", :like) |> Enum.to_list
+      response = Unsplash.Photos.like("0XR2s9D3PLI") |> Enum.to_list
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
   end
 
-  test "Unsplash.photos(id, :unlike)" do
+  test "Unsplash.Photos.unlike(id)" do
     use_cassette "unlike_photo" do
-      response = Unsplash.photos("0XR2s9D3PLI", :unlike)
+      response = Unsplash.Photos.unlike("0XR2s9D3PLI")
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
