@@ -1,0 +1,49 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/search/collections?query=El+Capitan"
+    },
+    "response": {
+      "body": "{\"total\":0,\"total_pages\":0,\"results\":[]}",
+      "headers": {
+        "Server": "Cowboy",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "X-Total": "0",
+        "X-Per-Page": "10",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Content-Type": "application/json",
+        "X-Ratelimit-Limit": "50",
+        "X-Ratelimit-Remaining": "23",
+        "X-Request-Id": "86c61972-e9ea-406a-a4b5-0fe0f9f1a2b8",
+        "X-Runtime": "0.037014",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Via": "1.1 vegur",
+        "Fastly-Debug-Digest": "73fec0b184ffd292b36827aaae12b89cd4a0bd9f1d23cedc8c020d75a4ca71ba",
+        "Content-Length": "40",
+        "Accept-Ranges": "bytes",
+        "Date": "Mon, 12 Jun 2017 21:20:31 GMT",
+        "Age": "0",
+        "Connection": "keep-alive",
+        "X-Served-By": "cache-iad2133-IAD, cache-sea1037-SEA",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1497302431.478089,VS0,VE118",
+        "Vary": "Origin"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]

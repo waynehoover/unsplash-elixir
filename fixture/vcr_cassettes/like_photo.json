@@ -1,0 +1,46 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "post",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/photos/0XR2s9D3PLI/like"
+    },
+    "response": {
+      "body": "{\"errors\":[\"OAuth error: The access token is invalid\"]}",
+      "headers": {
+        "Server": "Cowboy",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Cache-Control": "no-cache",
+        "X-Ratelimit-Limit": "50",
+        "X-Ratelimit-Remaining": "40",
+        "X-Request-Id": "3c9b4b06-b2e2-4360-81f7-8ab08f91ddb7",
+        "X-Runtime": "0.010938",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Via": "1.1 vegur",
+        "Accept-Ranges": "bytes",
+        "Fastly-Debug-Digest": "191dcb1772aa2e8ec94ec600dff6e79ddabb8fa56eed89aedf36babb4f9dfda1",
+        "Content-Length": "55",
+        "Date": "Mon, 12 Jun 2017 21:19:42 GMT",
+        "Connection": "keep-alive",
+        "X-Served-By": "cache-iad2141-IAD, cache-sea1025-SEA",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1497302383.896676,VS0,VE90",
+        "Vary": "Origin"
+      },
+      "status_code": 401,
+      "type": "ok"
+    }
+  }
+]

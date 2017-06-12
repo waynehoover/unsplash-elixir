@@ -1,0 +1,49 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "Client-ID client_id",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/users/believenyaself/collections?"
+    },
+    "response": {
+      "body": "[]",
+      "headers": {
+        "Server": "Cowboy",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "X-Total": "0",
+        "X-Per-Page": "50",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Content-Type": "application/json",
+        "X-Ratelimit-Limit": "50",
+        "X-Ratelimit-Remaining": "25",
+        "X-Request-Id": "7fb01cc9-5f39-4171-a725-9c2e3144748c",
+        "X-Runtime": "0.022616",
+        "Strict-Transport-Security": "max-age=31536000",
+        "Via": "1.1 vegur",
+        "Fastly-Debug-Digest": "929004ea9791968e1bc531a76531ec5372596ca7232b4c658d4be840482530dc",
+        "Content-Length": "2",
+        "Accept-Ranges": "bytes",
+        "Date": "Mon, 12 Jun 2017 21:20:29 GMT",
+        "Age": "0",
+        "Connection": "keep-alive",
+        "X-Served-By": "cache-iad2148-IAD, cache-sea1037-SEA",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1497302429.447101,VS0,VE101",
+        "Vary": "Origin"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
