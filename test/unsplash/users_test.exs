@@ -50,7 +50,7 @@ defmodule Unsplash.UsersTest do
     end
   end
 
-  # Current User Tests
+  @tag skip: true
   test "Unsplash.Users.me" do
     use_cassette "me" do
       response = Unsplash.Users.me |> Enum.to_list
@@ -59,6 +59,7 @@ defmodule Unsplash.UsersTest do
     end
   end
 
+  @tag skip: true
   test "Unsplash.Users.update_me" do
     use_cassette "update_me" do
       response = Unsplash.Users.update_me(first_name: "Elixir", last_name: "Rocks", email: "elixir-#{Enum.take_random(?a..?z, 5)}@elixir-lang.org", url: "http://elixir-lang.org/", location: "São Paulo", bio: "Elixir is a dynamic, functional language designed for building scalable and maintainable applications.", instagram_username: "elixirlang" ) |> Enum.to_list

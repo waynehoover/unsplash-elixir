@@ -4,7 +4,7 @@ defmodule Unsplash.Mixfile do
   def project do
     [
       app: :unsplash,
-      version: "0.4.0",
+      version: "1.0.0",
       elixir: "~> 1.4",
       description: "Unsplash API in Elixir",
       source_url: "https://github.com/waynehoover/unsplash-elixir",
