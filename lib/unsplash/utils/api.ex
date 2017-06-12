@@ -18,7 +18,7 @@ defmodule Unsplash.Utils.API do
   def process_request_headers(headers) do
     headers = headers ++ [
       {"Accept-Version", "v1"},
-      {"Authorization", "Client-ID #{application_id}"},
+      {"Authorization", "Client-ID #{application_id()}"},
       {"Content-type", "application/json; charset=utf-8"}
     ]
 
