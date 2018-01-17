@@ -10,10 +10,11 @@ defmodule Unsplash.Search do
   Options:
     page  Page number to retrieve. (Optional; default: 1)
     per_page  Number of items per page. (Optional; default: 10)
-    collections Collection ID(‘s) to narrow search. If multiple, comma-separated.
+    collections  Collection ID(‘s) to narrow search. If multiple, comma-separated.
+    orientation  Filter search results by photo orientation. Valid values are landscape, portrait, and squarish.
   """
   def photos(opts \\ []) do
-    params = [:query, :page, :per_page, :collections]
+    params = [:query, :page, :per_page, :collections, :orientation]
     ResultStream.new("/search/photos", params, opts)
   end
 
