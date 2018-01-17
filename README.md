@@ -30,14 +30,16 @@ Now every API call will use the access_code gerenated in the above step automati
 
 ## Installation
 
-  1. Add unsplash to your list of dependencies in `mix.exs`:
+1. Add unsplash to your list of dependencies in `mix.exs`:
+```elixir
+    def deps do
+      [{:unsplash, "~> 1.0.0"}]
+    end
+```
 
-        def deps do
-          [{:unsplash, "~> 1.0.0"}]
-        end
-
-  2. Ensure unsplash is started before your application:
-
-        def application do
-          [applications: [:unsplash]]
-        end
+2. Ensure unsplash is started before your application:
+```elixir
+    def application do
+      [applications: [:unsplash]]
+    end
+```
