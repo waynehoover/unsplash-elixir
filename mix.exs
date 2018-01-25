@@ -28,8 +28,9 @@ defmodule Unsplash.Mixfile do
       {:poison, "~> 3.1.0"},
       {:oauth2, "~> 0.9.1"},
       {:earmark, "~> 1.2.2", only: :dev},
-      {:ex_doc, "~> 0.18.1", only: :dev},
-      {:exvcr, "~> 0.9.1", only: [:test, :dev]}
+      {:ex_doc, "~> 0.18.1", only: :dev, runtime: false},
+      {:exvcr, "~> 0.9.1", only: [:test, :dev]},
+      {:credo, "~> 0.8", only: [:dev, :test]}
     ]
   end
 

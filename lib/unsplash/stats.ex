@@ -1,4 +1,9 @@
 defmodule Unsplash.Stats do
+  @moduledoc ~S"""
+  ## /stats
+  The only stat api endpoint
+  """
+
   alias Unsplash.Utils.ResultStream
 
   @doc ~S"""

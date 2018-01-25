@@ -1,4 +1,9 @@
 defmodule Unsplash.Photos do
+  @moduledoc ~S"""
+  ## /photos
+  All /photos/* api endpoints
+  """
+
   alias Unsplash.Utils.{API, ResultStream}
 
   @doc ~S"""

@@ -1,4 +1,9 @@
 defmodule Unsplash.Search do
+  @moduledoc ~S"""
+  ## /search
+  All /search/* api endpoints
+  """
+
   alias Unsplash.Utils.ResultStream
 
   @doc ~S"""

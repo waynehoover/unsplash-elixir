@@ -1,4 +1,9 @@
 defmodule Unsplash.Utils.ResultStream do
+  @moduledoc ~S"""
+  ## ResultStream
+  Utility functions for traversing api pagination, by generating an elixir Stream to work on.
+  """
+
   alias Unsplash.Utils.API
 
   @doc ~S"""

@@ -1,4 +1,9 @@
 defmodule Unsplash.Users do
+  @moduledoc ~S"""
+  ## /users
+  All /users/* api endpoints
+  """
+
   alias Unsplash.Utils.{API, ResultStream}
 
   @doc ~S"""
