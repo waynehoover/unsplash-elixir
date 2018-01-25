@@ -47,5 +47,4 @@ defmodule Unsplash.Search do
     params = [:query, :page, :per_page]
     ResultStream.new("/search/users", params, opts)
   end
-
 end

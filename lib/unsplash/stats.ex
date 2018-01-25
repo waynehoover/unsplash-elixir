@@ -7,5 +7,4 @@ defmodule Unsplash.Stats do
   def total do
     ResultStream.new("/stats/total")
   end
-
 end

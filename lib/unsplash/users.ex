@@ -1,5 +1,6 @@
 defmodule Unsplash.Users do
   alias Unsplash.Utils.{API, ResultStream}
+
   @doc ~S"""
   GET /users/:username
 
@@ -21,7 +22,7 @@ defmodule Unsplash.Users do
     * `username` - The user’s username. Required.
   """
   def portfolio(username) do
-    API.get!("/users/#{username}/portfolio").body |> Poison.decode!
+    API.get!("/users/#{username}/portfolio").body |> Poison.decode!()
   end
 
   @doc ~S"""
@@ -105,10 +106,21 @@ defmodule Unsplash.Users do
   Requires `write_user` scope
   """
   def update_me(opts \\ []) do
-    params = opts |> Keyword.take([:username, :first_name, :last_name, :email, :url, :location, :bio, :instagram_username])
-                  |> Enum.into(%{})
-                  |> Poison.encode!
-     API.put!("/me", params).body |> Poison.decode!
-  end
+    params =
+      opts
+      |> Keyword.take([
+        :username,
+        :first_name,
+        :last_name,
+        :email,
+        :url,
+        :location,
+        :bio,
+        :instagram_username
+      ])
+      |> Enum.into(%{})
+      |> Poison.encode!()
 
+    API.put!("/me", params).body |> Poison.decode!()
+  end
 end

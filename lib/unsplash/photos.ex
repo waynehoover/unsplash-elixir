@@ -85,7 +85,7 @@ defmodule Unsplash.Photos do
     * `id` - the photo id
   """
   def download_link(id) do
-    API.get!("/photos/#{id}/download").body |> Poison.decode!
+    API.get!("/photos/#{id}/download").body |> Poison.decode!()
   end
 
   @doc ~S"""
@@ -111,11 +111,26 @@ defmodule Unsplash.Photos do
   Requires the `write_photos` scope
   """
   def update(id, opts \\ []) do
-    optional_params = [location: [:latitude, :longitude, :name, :city, :country, :confidential], exif: [:make, :model, :exposure_time, :exposure_value, :aperture_value, :focal_length, :iso_speed_ratings]]
-    params = opts |> Keyword.take(optional_params)
-                  |> Enum.into(%{})
-                  |> Poison.encode!
-    API.put!("/photos/#{id}", params).body |> Poison.decode!
+    optional_params = [
+      location: [:latitude, :longitude, :name, :city, :country, :confidential],
+      exif: [
+        :make,
+        :model,
+        :exposure_time,
+        :exposure_value,
+        :aperture_value,
+        :focal_length,
+        :iso_speed_ratings
+      ]
+    ]
+
+    params =
+      opts
+      |> Keyword.take(optional_params)
+      |> Enum.into(%{})
+      |> Poison.encode!()
+
+    API.put!("/photos/#{id}", params).body |> Poison.decode!()
   end
 
   @doc ~S"""
@@ -127,7 +142,7 @@ defmodule Unsplash.Photos do
   Requires the `write_likes` scope
   """
   def like(id) do
-    API.post!("/photos/#{id}/like", []).body |> Poison.decode!
+    API.post!("/photos/#{id}/like", []).body |> Poison.decode!()
   end
 
   @doc ~S"""
@@ -138,11 +153,11 @@ defmodule Unsplash.Photos do
   """
   def unlike(id) do
     result = API.delete!("/photos/#{id}/like").body
+
     if result != "" do
-      result |> Poison.decode!
+      result |> Poison.decode!()
     else
       []
     end
   end
-
 end

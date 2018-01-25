@@ -9,7 +9,7 @@ defmodule Unsplash.Utils.ResultStream do
     "/users/wayneph/photos?per_page=30"
   """
   def build_uri(url, optional_params, given_params) do
-    query = given_params |> Keyword.take(optional_params) |> URI.encode_query
+    query = given_params |> Keyword.take(optional_params) |> URI.encode_query()
     "#{url}?#{query}"
   end
 
@@ -18,11 +18,7 @@ defmodule Unsplash.Utils.ResultStream do
   end
 
   def new(url) do
-    Stream.resource(
-      fn -> fetch_page(url) end,
-      &process_page/1,
-      fn _ -> true end
-    )
+    Stream.resource(fn -> fetch_page(url) end, &process_page/1, fn _ -> true end)
   end
 
   defp fetch_page(url) do
@@ -41,12 +37,13 @@ defmodule Unsplash.Utils.ResultStream do
     links = String.split(links_string, ", ")
 
     Enum.map(links, fn link ->
-      [_,name] = Regex.run(~r{rel="([a-z]+)"}, link)
-      [_,url] = Regex.run(~r{<([^>]+)>}, link)
-      short_url = String.replace(url, API.endpoint, "")
+      [_, name] = Regex.run(~r{rel="([a-z]+)"}, link)
+      [_, url] = Regex.run(~r{<([^>]+)>}, link)
+      short_url = String.replace(url, API.endpoint(), "")
 
       {name, short_url}
-    end) |> Enum.into(%{})
+    end)
+    |> Enum.into(%{})
   end
 
   defp process_page({nil, nil}) do

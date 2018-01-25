@@ -99,10 +99,13 @@ defmodule Unsplash.Collections do
   Requires `write_collections` scope
   """
   def create(opts \\ []) do
-    params = opts |> Keyword.take([:title, :description, :private])
-                  |> Enum.into(%{})
-                  |> Poison.encode!
-    API.post!("/collections", params).body |> Poison.decode!
+    params =
+      opts
+      |> Keyword.take([:title, :description, :private])
+      |> Enum.into(%{})
+      |> Poison.encode!()
+
+    API.post!("/collections", params).body |> Poison.decode!()
   end
 
   @doc ~S"""
@@ -119,10 +122,13 @@ defmodule Unsplash.Collections do
   Requires `write_collections` scope
   """
   def update(id, opts \\ []) do
-    params = opts |> Keyword.take([:title, :description, :private])
-                  |> Enum.into(%{})
-                  |> Poison.encode!
-    API.put!("/collections/#{id}", params).body |> Poison.decode!
+    params =
+      opts
+      |> Keyword.take([:title, :description, :private])
+      |> Enum.into(%{})
+      |> Poison.encode!()
+
+    API.put!("/collections/#{id}", params).body |> Poison.decode!()
   end
 
   @doc ~S"""
@@ -131,7 +137,7 @@ defmodule Unsplash.Collections do
   Requires `write_collections` scope
   """
   def delete(id) do
-    API.delete!("/collections/#{id}").body |> Poison.decode!
+    API.delete!("/collections/#{id}").body |> Poison.decode!()
   end
 
   @doc ~S"""
@@ -144,8 +150,8 @@ defmodule Unsplash.Collections do
   Requires `write_collections` scope
   """
   def add_photo(id, photo_id) do
-    params = %{photo_id: photo_id} |> Poison.decode!
-    API.post!("/collections/#{id}/add", params).body |> Poison.decode!
+    params = %{photo_id: photo_id} |> Poison.decode!()
+    API.post!("/collections/#{id}/add", params).body |> Poison.decode!()
   end
 
   @doc ~S"""
@@ -158,7 +164,7 @@ defmodule Unsplash.Collections do
   Requires `write_collections` scope
   """
   def remove_photo(id, photo_id) do
-    params = %{photo_id: photo_id} |> Poison.decode!
-    API.delete!("/collections/#{id}/remove", params).body |> Poison.decode!
+    params = %{photo_id: photo_id} |> Poison.decode!()
+    API.delete!("/collections/#{id}/remove", params).body |> Poison.decode!()
   end
 end

@@ -16,14 +16,16 @@ defmodule Unsplash.Utils.API do
   end
 
   def process_request_headers(headers) do
-    headers = headers ++ [
-      {"Accept-Version", "v1"},
-      {"Authorization", "Client-ID #{application_id()}"},
-      {"Content-type", "application/json; charset=utf-8"}
-    ]
+    headers =
+      headers ++
+        [
+          {"Accept-Version", "v1"},
+          {"Authorization", "Client-ID #{application_id()}"},
+          {"Content-type", "application/json; charset=utf-8"}
+        ]
 
-    if OAuth.get_access_token do
-      headers ++ [{"Authorization", "Bearer #{OAuth.get_access_token}"}]
+    if OAuth.get_access_token() do
+      headers ++ [{"Authorization", "Bearer #{OAuth.get_access_token()}"}]
     else
       headers
     end
@@ -32,5 +34,4 @@ defmodule Unsplash.Utils.API do
   defp application_id do
     Application.get_env(:unsplash, :application_id)
   end
-
 end

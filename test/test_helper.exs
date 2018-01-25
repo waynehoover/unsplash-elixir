@@ -1,6 +1,7 @@
 ExUnit.configure(exclude: [skip: true])
 ExUnit.start()
-HTTPoison.start() #Not sure I need this?
+# Not sure I need this?
+HTTPoison.start()
 
 ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
 ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
@@ -14,6 +15,6 @@ defmodule PathHelpers do
   end
 
   def fixture_path(file_path) do
-    Path.join fixture_path(), file_path
+    Path.join(fixture_path(), file_path)
   end
 end
