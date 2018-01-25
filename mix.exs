@@ -5,13 +5,20 @@ defmodule Unsplash.Mixfile do
     [
       app: :unsplash,
       version: "1.0.0",
-      elixir: "~> 1.4",
+      elixir: "~> 1.6",
       description: "Unsplash API in Elixir",
       source_url: "https://github.com/waynehoover/unsplash-elixir",
       homepage_url: "https://github.com/waynehoover/unsplash-elixir",
       package: package(),
       deps: deps(),
-      docs: docs()
+      docs: docs(),
+      test_coverage: [tool: ExCoveralls],
+      preferred_cli_env: [
+        "coveralls": :test,
+        "coveralls.detail": :test,
+        "coveralls.post": :test,
+        "coveralls.html": :test
+      ]
     ]
   end
 
@@ -30,7 +37,8 @@ defmodule Unsplash.Mixfile do
       {:earmark, "~> 1.2.2", only: :dev},
       {:ex_doc, "~> 0.18.1", only: :dev, runtime: false},
       {:exvcr, "~> 0.9.1", only: [:test, :dev]},
-      {:credo, "~> 0.8", only: [:dev, :test]}
+      {:credo, "~> 0.8", only: [:dev, :test]},
+      {:excoveralls, "~> 0.8", only: :test}
     ]
   end
 
