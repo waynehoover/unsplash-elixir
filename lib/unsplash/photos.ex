@@ -64,7 +64,7 @@ defmodule Unsplash.Photos do
     * `count` -The number of photos to return. (Default: 1; max: 30)
   """
   def random(opts \\ []) do
-    params = [:collections, :featured, :username, :query, :w, :h, :orientation, :per_page, :page]
+    params = [:collections, :featured, :username, :query, :w, :h, :orientation, :per_page, :page, :count]
     ResultStream.new("/photos/random", params, opts)
   end
 
