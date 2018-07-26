@@ -19,7 +19,9 @@ defmodule Unsplash.Utils.ResultStream do
   end
 
   def new(url, given_params, optional_params) do
-    build_uri(url, given_params, optional_params) |> new
+    url
+    |> build_uri(given_params, optional_params)
+    |> new
   end
 
   def new(url) do
@@ -39,9 +41,9 @@ defmodule Unsplash.Utils.ResultStream do
   end
 
   def parse_links(links_string) do
-    links = String.split(links_string, ", ")
-
-    Enum.map(links, fn link ->
+    links_string
+    |> String.split(", ")
+    |> Enum.map(fn link ->
       [_, name] = Regex.run(~r{rel="([a-z]+)"}, link)
       [_, url] = Regex.run(~r{<([^>]+)>}, link)
       short_url = String.replace(url, API.endpoint(), "")

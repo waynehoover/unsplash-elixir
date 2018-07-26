@@ -84,8 +84,7 @@ defmodule Unsplash.Utils.OAuth do
 
   # Get the Oauth.AccessToken struct from the agent
   def get_access_token do
-    Agent.get(__MODULE__, &Map.get(&1, :token))
-    |> process_token
+    process_token Agent.get(__MODULE__, &Map.get(&1, :token))
   end
 
   # If the token is expired refresh it.

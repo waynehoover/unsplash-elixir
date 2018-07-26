@@ -31,14 +31,14 @@ defmodule Unsplash.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 0.13"},
+      {:httpoison, "~> 1.2.0"},
       {:poison, "~> 3.1.0"},
       {:oauth2, "~> 0.9.1"},
-      {:earmark, "~> 1.2.2", only: :dev},
-      {:ex_doc, "~> 0.18.1", only: :dev, runtime: false},
-      {:exvcr, "~> 0.9.1", only: [:test, :dev]},
-      {:credo, "~> 0.8", only: [:dev, :test]},
-      {:excoveralls, "~> 0.8", only: :test}
+      {:earmark, "~> 1.2.5", only: :dev},
+      {:ex_doc, "~> 0.19.0", only: :dev, runtime: false},
+      {:exvcr, "~> 0.10.2", only: [:test, :dev]},
+      {:credo, "~> 0.9.3", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.9.1", only: :test}
     ]
   end
 
