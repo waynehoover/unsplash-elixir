@@ -1,4 +1,4 @@
-# Unsplash [![Build Status](https://travis-ci.org/waynehoover/unsplash-elixir.svg?branch=master)](https://travis-ci.org/waynehoover/unsplash-elixir) [![Hex pm](http://img.shields.io/hexpm/v/unsplash.svg?style=flat)](https://hex.pm/packages/unsplash)
+# Unsplash [![Build Status](https://travis-ci.org/waynehoover/unsplash-elixir.svg?branch=master)](https://travis-ci.org/waynehoover/unsplash-elixir) [![Hex pm](http://img.shields.io/hexpm/v/unsplash.svg?style=flat)](https://hex.pm/packages/unsplash) [![Codacy Badge](https://api.codacy.com/project/badge/Grade/9ecf49d0c73e4b268e77b34e766e149a)](https://www.codacy.com/app/waynehoover/unsplash-elixir?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=waynehoover/unsplash-elixir&amp;utm_campaign=Badge_Grade)
 
 [Unsplash](https://unsplash.com) API wrapper in Elixir.
 
