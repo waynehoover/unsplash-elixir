@@ -96,18 +96,18 @@ defmodule Unsplash.Photos do
     * `opts` - Keyword list of options
 
   Options:
-    * location[latitude]  The photo location’s latitude (Optional)
-    * location[longitude] The photo location’s longitude (Optional)
-    * location[name]  The photo location’s name (Optional)
-    * location[city]  The photo location’s city (Optional)
-    * location[country] The photo location’s country (Optional)
-    * location[confidential]  The photo location’s confidentiality (Optional)
-    * exif[make]  Camera’s brand (Optional)
-    * exif[model] Camera’s model (Optional)
-    * exif[exposure_time] Camera’s exposure time (Optional)
-    * exif[aperture_value]  Camera’s aperture value (Optional)
-    * exif[focal_length]  Camera’s focal length (Optional)
-    * exif[iso_speed_ratings] Camera’s iso (Optional)
+    * `location[latitude]` - The photo location’s latitude (Optional)
+    * `location[longitude]` - The photo location’s longitude (Optional)
+    * `location[name]` - The photo location’s name (Optional)
+    * `location[city]` - The photo location’s city (Optional)
+    * `location[country]` - The photo location’s country (Optional)
+    * `location[confidential]` - The photo location’s confidentiality (Optional)
+    * `exif[make]` - Camera’s brand (Optional)
+    * `exif[model]` - Camera’s model (Optional)
+    * `exif[exposure_time]` - Camera’s exposure time (Optional)
+    * `exif[aperture_value]` - Camera’s aperture value (Optional)
+    * `exif[focal_length]` - Camera’s focal length (Optional)
+    * `exif[iso_speed_ratings]` - Camera’s iso (Optional)
 
   Requires the `write_photos` scope
   """
