@@ -1,0 +1,47 @@
+[
+  {
+    "request": {
+      "body": "",
+      "headers": {
+        "Accept-Version": "v1",
+        "Authorization": "***",
+        "Content-type": "application/json; charset=utf-8"
+      },
+      "method": "get",
+      "options": [],
+      "request_body": "",
+      "url": "https://api.unsplash.com/stats/total"
+    },
+    "response": {
+      "binary": false,
+      "body": "{\"total_photos\":936159,\"photo_downloads\":880359980,\"photos\":936159,\"downloads\":880359980,\"views\":154581017194,\"likes\":17488298,\"photographers\":130790,\"pixels\":14507148337600,\"downloads_per_second\":22,\"views_per_second\":4110,\"developers\":57870,\"applications\":1027,\"requests\":19511642542}",
+      "headers": {
+        "Server": "Cowboy",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Request-Method": "*",
+        "Access-Control-Allow-Headers": "*",
+        "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
+        "Content-Type": "application/json",
+        "X-Ratelimit-Limit": "50",
+        "X-Ratelimit-Remaining": "17",
+        "X-Request-Id": "f2335306-91a7-4d4b-82a8-b1f118b12a92",
+        "X-Runtime": "0.021303",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
+        "Via": "1.1 vegur",
+        "Content-Length": "286",
+        "Accept-Ranges": "bytes",
+        "Date": "Wed, 10 Apr 2019 02:55:19 GMT",
+        "Age": "0",
+        "Connection": "keep-alive",
+        "X-Served-By": "cache-iad2120-IAD, cache-pao17420-PAO",
+        "X-Cache": "MISS, MISS",
+        "X-Cache-Hits": "0, 0",
+        "X-Timer": "S1554864919.191543,VS0,VE97",
+        "Vary": "Origin, Authorization"
+      },
+      "status_code": 200,
+      "type": "ok"
+    }
+  }
+]
