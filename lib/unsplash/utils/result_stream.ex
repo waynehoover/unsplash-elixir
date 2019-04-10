@@ -1,14 +1,13 @@
 defmodule Unsplash.Utils.ResultStream do
   @moduledoc ~S"""
-  ## ResultStream
-  Utility functions for traversing api pagination, by generating an elixir Stream to work on.
+  Utility functions for traversing api pagination by generating an elixir Stream to work on.
   """
 
   alias Unsplash.Utils.API
 
   def new(path, params) do
     %URI{path: path, query: URI.encode_query(params)}
-    |> URI.to_string
+    |> URI.to_string()
     |> new
   end
 

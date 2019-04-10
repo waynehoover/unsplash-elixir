@@ -1,6 +1,5 @@
 defmodule Unsplash.Collections do
   @moduledoc ~S"""
-  ## /collections
   All /collections/* api endpoints
   """
 

@@ -1,6 +1,5 @@
 defmodule Unsplash.Search do
   @moduledoc ~S"""
-  ## /search
   All /search/* api endpoints
   """
 
@@ -11,6 +10,7 @@ defmodule Unsplash.Search do
 
   Args:
     * `opts` - Keyword list of options
+
   Options:
     * `query` - Search terms.
     * `collections` - Collection ID(‘s) to narrow search. If multiple, comma-separated.

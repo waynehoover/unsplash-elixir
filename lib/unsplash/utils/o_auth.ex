@@ -1,7 +1,10 @@
 defmodule Unsplash.Utils.OAuth do
   @moduledoc ~S"""
-  ## Authorization
-  `Unsplash.OAuth.authorize_url! scope: "public read_user write_user read_photos write_photos write_likes read_collections write_collections"
+  Functions for user oAuth authentication.
+
+  Example usage:
+
+  `Unsplash.OAuth.authorize_url!(scope: "public read_user write_user read_photos write_photos write_likes read_collections write_collections")`
   `Unsplash.OAuth.authorize!(code: auth_code_from_the_callback_above)`
 
   Now all calls will be authorized.
@@ -85,7 +88,7 @@ defmodule Unsplash.Utils.OAuth do
 
   # Get the Oauth.AccessToken struct from the agent
   def get_access_token do
-    process_token Agent.get(__MODULE__, &Map.get(&1, :token))
+    process_token(Agent.get(__MODULE__, &Map.get(&1, :token)))
   end
 
   # If the token is expired refresh it.

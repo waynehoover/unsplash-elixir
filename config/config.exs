@@ -8,6 +8,5 @@ if !System.get_env("TRAVIS") do
   import_config "secrets.exs"
 end
 
-config :exvcr, [
+config :exvcr,
   filter_request_headers: ["Authorization"]
-]

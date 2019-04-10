@@ -1,6 +1,5 @@
 defmodule Unsplash.Users do
   @moduledoc ~S"""
-  ## Users
   API endpoints for current-user and users
   """
 
@@ -36,6 +35,7 @@ defmodule Unsplash.Users do
   Args:
     * `username` The user’s username. Required.
     * `opts` keyword list of optional params
+
   Options:
     * `page` Page number to retrieve. (Optional; default: 1)
     * `per_page` Number of items per page. (Optional; default: 10)
@@ -54,6 +54,7 @@ defmodule Unsplash.Users do
   Args:
     * `username` the username string
     * `opts` keyword list of optional params
+
   Options:
     * `order_by` How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
   """
@@ -77,6 +78,7 @@ defmodule Unsplash.Users do
   Args:
     * `username` -The user’s username. Required.
     * `opts` keyword list of optional params
+
   Options:
     * `resolution`  -The frequency of the stats. (Optional; default: “days”)
     * `quantity` -The amount of for each stat. (Optional; default: 30)
@@ -99,6 +101,7 @@ defmodule Unsplash.Users do
 
   Args:
     * `opts` keyword list of optional params
+
   Options:
     * `username` - Username.
     * `first_name` - First name.

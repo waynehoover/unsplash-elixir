@@ -1,6 +1,5 @@
 defmodule Unsplash.Photos do
   @moduledoc ~S"""
-  ## /photos
   All /photos/* api endpoints
   """
 
@@ -11,6 +10,7 @@ defmodule Unsplash.Photos do
 
   Args:
     * `opts` - Keyword list of options
+
   Options:
     * `order_by` - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
   """
@@ -23,6 +23,7 @@ defmodule Unsplash.Photos do
 
   Args:
     * `opts` - Keyword list of options
+
   Options:
     * `order_by` -  How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
   """
@@ -49,6 +50,7 @@ defmodule Unsplash.Photos do
 
   Args:
     * `opts` - Keyword list of options
+
   Options:
     * `collections` - Public collection ID(‘s) to filter selection. If multiple, comma-separated
     * `featured` - Limit selection to featured photos.
@@ -67,6 +69,7 @@ defmodule Unsplash.Photos do
   Args
     * `id` - The public id of the photo. Required.
     * `opts` - Keyword list of options
+
   Options:
     * `resolution` - The frequency of the stats. (Optional; default: “days”)
     * `quantity` - The amount of for each stat. (Optional; default: 30)
@@ -91,6 +94,7 @@ defmodule Unsplash.Photos do
   Args:
     * `id` - The photo’s ID. Required.
     * `opts` - Keyword list of options
+
   Options:
     * location[latitude]  The photo location’s latitude (Optional)
     * location[longitude] The photo location’s longitude (Optional)
