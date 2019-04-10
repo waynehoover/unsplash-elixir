@@ -3,8 +3,6 @@ ExUnit.start()
 # Not sure I need this?
 HTTPoison.start()
 
-ExVCR.Config.filter_sensitive_data("Client-ID.*", "Client-ID client_id")
-ExVCR.Config.filter_sensitive_data("Bearer.*", "Bearer OAuth_access_token")
 # To run the tests needing authorization, without using VCR,
 # follow the auth steps in the readme, and put the code you get back into the function below.
 # Unsplash.OAuth.authorize! code: "code_goes_here"

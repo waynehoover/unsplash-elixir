@@ -33,7 +33,7 @@ Now every API call will use the access_code gerenated in the above step automati
 1. Add unsplash to your list of dependencies in `mix.exs`:
 ```elixir
     def deps do
-      [{:unsplash, "~> 1.0.0"}]
+      [{:unsplash, "~> 1.1.0"}]
     end
 ```
 

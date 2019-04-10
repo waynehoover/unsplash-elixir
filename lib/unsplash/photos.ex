@@ -10,62 +10,55 @@ defmodule Unsplash.Photos do
   GET /photos
 
   Args:
+    * `opts` - Keyword list of options
+  Options:
     * `order_by` - How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
   """
   def all(opts \\ []) do
-    params = [:per_page, :page, :order_by]
-    ResultStream.new("/photos", params, opts)
+    ResultStream.new("/photos", opts)
   end
 
   @doc ~S"""
     GET /photos/curated
-    Note: See the note on hotlinking.
 
-    Args:
-      'page' - Page number to retrieve. (Optional; default: 1)
-      'per_page' - Number of items per page. (Optional; default: 10)
-      'order_by' -  How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
+  Args:
+    * `opts` - Keyword list of options
+  Options:
+    * `order_by` -  How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
   """
   def curated(opts \\ []) do
-    params = [:per_page, :page, :order_by]
-    ResultStream.new("/photos/curated", params, opts)
+    ResultStream.new("/photos/curated", opts)
   end
 
   @doc ~S"""
   GET /photos/:id
 
+  Returns instances of dynamically resizable image URLs.
+
   Args:
     * `id` - the photo id
-
-  Options:
-    * `w` - Image width in pixels.
-    * `h` - Image height in pixels.
-    * `rect` - 4 comma-separated integers representing x, y, width, height of the cropped rectangle.
   """
-  def get(id, opts \\ []) do
-    params = [:w, :h, :rect, :per_page, :page]
-    ResultStream.new("/photos/#{id}", params, opts)
+  def get(id) do
+    ResultStream.new("/photos/#{id}")
   end
 
   @doc ~S"""
   GET /photos/random
 
+  Returns instances of dynamically resizable image URLs.
+
   Args:
     * `opts` - Keyword list of options
-
   Options:
     * `collections` - Public collection ID(‘s) to filter selection. If multiple, comma-separated
     * `featured` - Limit selection to featured photos.
     * `username` - Limit selection to a single user.
-    * `query` -Limit selection to photos matching a search term.
-    * `w` -Image width in pixels.
-    * `h` -Image height in pixels.
-    * `orientation` -Filter search results by photo orientation. Valid values are landscape, portrait, and squarish.
-    * `count` -The number of photos to return. (Default: 1; max: 30)
+    * `query` - Limit selection to photos matching a search term.
+    * `orientation` - Filter search results by photo orientation. Valid values are landscape, portrait, and squarish.
+    * `count` - The number of photos to return. (Default: 1; max: 30)
   """
   def random(opts \\ []) do
-    params = [:collections, :featured, :username, :query, :w, :h, :orientation, :per_page, :page, :count]
-    ResultStream.new("/photos/random", params, opts)
+    ResultStream.new("/photos/random", opts)
   end
 
   @doc ~S"""
@@ -73,14 +66,13 @@ defmodule Unsplash.Photos do
 
   Args
     * `id` - The public id of the photo. Required.
-
+    * `opts` - Keyword list of options
   Options:
     * `resolution` - The frequency of the stats. (Optional; default: “days”)
     * `quantity` - The amount of for each stat. (Optional; default: 30)
   """
   def statistics(id, opts \\ []) do
-    params = [:resolution, :quantity]
-    ResultStream.new("/photos/#{id}/statistics", params, opts)
+    ResultStream.new("/photos/#{id}/statistics", opts)
   end
 
   @doc ~S"""
@@ -90,7 +82,7 @@ defmodule Unsplash.Photos do
     * `id` - the photo id
   """
   def download_link(id) do
-    API.get!("/photos/#{id}/download").body |> Poison.decode!()
+    API.get!("/photos/#{id}/download").body |> Jason.decode!()
   end
 
   @doc ~S"""
@@ -98,7 +90,7 @@ defmodule Unsplash.Photos do
 
   Args:
     * `id` - The photo’s ID. Required.
-
+    * `opts` - Keyword list of options
   Options:
     * location[latitude]  The photo location’s latitude (Optional)
     * location[longitude] The photo location’s longitude (Optional)
@@ -133,9 +125,9 @@ defmodule Unsplash.Photos do
       opts
       |> Keyword.take(optional_params)
       |> Enum.into(%{})
-      |> Poison.encode!()
+      |> Jason.encode!()
 
-    API.put!("/photos/#{id}", params).body |> Poison.decode!()
+    API.put!("/photos/#{id}", params).body |> Jason.decode!()
   end
 
   @doc ~S"""
@@ -147,7 +139,7 @@ defmodule Unsplash.Photos do
   Requires the `write_likes` scope
   """
   def like(id) do
-    API.post!("/photos/#{id}/like", []).body |> Poison.decode!()
+    API.post!("/photos/#{id}/like", []).body |> Jason.decode!()
   end
 
   @doc ~S"""
@@ -157,12 +149,6 @@ defmodule Unsplash.Photos do
     * `id` - the photo id
   """
   def unlike(id) do
-    result = API.delete!("/photos/#{id}/like").body
-
-    if result != "" do
-      result |> Poison.decode!()
-    else
-      []
-    end
+    API.delete!("/photos/#{id}/like").body |> Jason.decode!()
   end
 end

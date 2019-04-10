@@ -1,7 +1,6 @@
 defmodule Unsplash.Stats do
   @moduledoc ~S"""
   ## /stats
-  The only stat api endpoint
   """
 
   alias Unsplash.Utils.ResultStream
@@ -10,6 +9,13 @@ defmodule Unsplash.Stats do
   GET /stats/total
   """
   def total do
+    ResultStream.new("/stats/total")
+  end
+
+  @doc ~S"""
+  GET /stats/month
+  """
+  def month do
     ResultStream.new("/stats/total")
   end
 end

@@ -10,24 +10,21 @@ defmodule Unsplash.Collections do
   GET /collections
   """
   def all(opts \\ []) do
-    params = [:page, :per_page]
-    ResultStream.new("/collections", params, opts)
+    ResultStream.new("/collections", opts)
   end
 
   @doc ~S"""
     GET /collections/featured
   """
   def featured(opts \\ []) do
-    params = [:page, :per_page]
-    ResultStream.new("/collections/featured", params, opts)
+    ResultStream.new("/collections/featured", opts)
   end
 
   @doc ~S"""
     GET /collections/curated
   """
   def curated(opts \\ []) do
-    params = [:page, :per_page]
-    ResultStream.new("/collections/curated", params, opts)
+    ResultStream.new("/collections/curated", opts)
   end
 
   @doc ~S"""
@@ -108,9 +105,9 @@ defmodule Unsplash.Collections do
       opts
       |> Keyword.take([:title, :description, :private])
       |> Enum.into(%{})
-      |> Poison.encode!()
+      |> Jason.encode!()
 
-    API.post!("/collections", params).body |> Poison.decode!()
+    API.post!("/collections", params).body |> Jason.decode!()
   end
 
   @doc ~S"""
@@ -131,9 +128,9 @@ defmodule Unsplash.Collections do
       opts
       |> Keyword.take([:title, :description, :private])
       |> Enum.into(%{})
-      |> Poison.encode!()
+      |> Jason.encode!()
 
-    API.put!("/collections/#{id}", params).body |> Poison.decode!()
+    API.put!("/collections/#{id}", params).body |> Jason.decode!()
   end
 
   @doc ~S"""
@@ -142,7 +139,7 @@ defmodule Unsplash.Collections do
   Requires `write_collections` scope
   """
   def delete(id) do
-    API.delete!("/collections/#{id}").body |> Poison.decode!()
+    API.delete!("/collections/#{id}").body |> Jason.decode!()
   end
 
   @doc ~S"""
@@ -155,8 +152,8 @@ defmodule Unsplash.Collections do
   Requires `write_collections` scope
   """
   def add_photo(id, photo_id) do
-    params = %{photo_id: photo_id} |> Poison.decode!()
-    API.post!("/collections/#{id}/add", params).body |> Poison.decode!()
+    params = %{photo_id: photo_id} |> Jason.decode!()
+    API.post!("/collections/#{id}/add", params).body |> Jason.decode!()
   end
 
   @doc ~S"""
@@ -169,7 +166,7 @@ defmodule Unsplash.Collections do
   Requires `write_collections` scope
   """
   def remove_photo(id, photo_id) do
-    params = %{photo_id: photo_id} |> Poison.decode!()
-    API.delete!("/collections/#{id}/remove", params).body |> Poison.decode!()
+    params = %{photo_id: photo_id} |> Jason.decode!()
+    API.delete!("/collections/#{id}/remove", params).body |> Jason.decode!()
   end
 end

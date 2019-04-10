@@ -4,9 +4,9 @@ defmodule Unsplash.Mixfile do
   def project do
     [
       app: :unsplash,
-      version: "1.0.0",
+      version: "1.1.0",
       elixir: "~> 1.6",
-      description: "Unsplash API in Elixir",
+      description: "Unsplash API for Elixir",
       source_url: "https://github.com/waynehoover/unsplash-elixir",
       homepage_url: "https://github.com/waynehoover/unsplash-elixir",
       package: package(),
@@ -14,7 +14,7 @@ defmodule Unsplash.Mixfile do
       docs: docs(),
       test_coverage: [tool: ExCoveralls],
       preferred_cli_env: [
-        "coveralls": :test,
+        coveralls: :test,
         "coveralls.detail": :test,
         "coveralls.post": :test,
         "coveralls.html": :test
@@ -31,14 +31,14 @@ defmodule Unsplash.Mixfile do
 
   defp deps do
     [
-      {:httpoison, "~> 1.2.0"},
-      {:poison, "~> 3.1.0"},
-      {:oauth2, "~> 0.9.1"},
-      {:earmark, "~> 1.2.5", only: :dev},
-      {:ex_doc, "~> 0.19.0", only: :dev, runtime: false},
-      {:exvcr, "~> 0.10.2", only: [:test, :dev]},
-      {:credo, "~> 0.9.3", only: [:dev, :test], runtime: false},
-      {:excoveralls, "~> 0.9.1", only: :test}
+      {:httpoison, "~> 1.5.0"},
+      {:jason, "~> 1.1"},
+      {:oauth2, "~> 1.0.0"},
+      {:earmark, "~> 1.3.2", only: :dev},
+      {:ex_doc, "~> 0.20.1", only: :dev, runtime: false},
+      {:exvcr, "~> 0.10.3", only: [:test, :dev]},
+      {:credo, "~> 1.0.4", only: [:dev, :test], runtime: false},
+      {:excoveralls, "~> 0.10.6", only: :test}
     ]
   end
 

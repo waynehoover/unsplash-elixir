@@ -10,46 +10,33 @@ defmodule Unsplash.Search do
   GET /search/photos
 
   Args:
-    query Search terms.
-
+    * `opts` - Keyword list of options
   Options:
-    page  Page number to retrieve. (Optional; default: 1)
-    per_page  Number of items per page. (Optional; default: 10)
-    collections  Collection ID(‘s) to narrow search. If multiple, comma-separated.
-    orientation  Filter search results by photo orientation. Valid values are landscape, portrait, and squarish.
+    * `query` - Search terms.
+    * `collections` - Collection ID(‘s) to narrow search. If multiple, comma-separated.
+    * `orientation` - Filter search results by photo orientation. Valid values are landscape, portrait, and squarish.
   """
   def photos(opts \\ []) do
-    params = [:query, :page, :per_page, :collections, :orientation]
-    ResultStream.new("/search/photos", params, opts)
+    ResultStream.new("/search/photos", opts)
   end
 
   @doc ~S"""
   GET /search/collections
 
   Args:
-    query Search terms.
-
-  Options:
-    page  Page number to retrieve. (Optional; default: 1)
-    per_page  Number of items per page. (Optional; default: 10)
+    * `query` Search terms.
   """
   def collections(opts \\ []) do
-    params = [:query, :page, :per_page]
-    ResultStream.new("/search/collections", params, opts)
+    ResultStream.new("/search/collections", opts)
   end
 
   @doc ~S"""
   GET /search/users
 
   Args:
-    query Search terms.
-
-  Options:
-    page  Page number to retrieve. (Optional; default: 1)
-    per_page  Number of items per page. (Optional; default: 10)
+    * `query` Search terms.
   """
   def users(opts \\ []) do
-    params = [:query, :page, :per_page]
-    ResultStream.new("/search/users", params, opts)
+    ResultStream.new("/search/users", opts)
   end
 end

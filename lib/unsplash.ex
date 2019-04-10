@@ -3,7 +3,9 @@ defmodule Unsplash do
   # The Unslpash API in Elixir
 
   ## Pagination
-  Those API results that are paginated will return a Stream in which you can resolve by using any Enum function. You can also pass in `per_page` and `page` keywords if you would like to do pagination manually. Max per_page is 30.
+  The API results that are paginated return a Stream which can be resolve by using any Enum function.
+  Or in other words, you don't need ot think about pagination.
+  But if you would like to think about pagination can also pass in `per_page` and `page` keywords. The max `per_page` is 30.
   """
   def start(_type, _args) do
     Unsplash.Utils.OAuth.start()

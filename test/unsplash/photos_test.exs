@@ -20,7 +20,7 @@ defmodule Unsplash.PhotosTest do
 
   test "Unsplash.Photos.random(opts)" do
     use_cassette "photos_random" do
-      response = Unsplash.Photos.random(query: "nature", w: 200, h: 200) |> Enum.to_list()
+      response = Unsplash.Photos.random(query: "nature") |> Enum.to_list()
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
@@ -42,9 +42,9 @@ defmodule Unsplash.PhotosTest do
     end
   end
 
-  test "Unsplash.Photos.get(id, opts)" do
+  test "Unsplash.Photos.get(id)" do
     use_cassette "photos_id" do
-      response = Unsplash.Photos.get("0XR2s9D3PLI", rect: "4,4,200,200") |> Enum.to_list()
+      response = Unsplash.Photos.get("0XR2s9D3PLI") |> Enum.to_list()
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end

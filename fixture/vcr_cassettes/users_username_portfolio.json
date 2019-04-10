@@ -4,7 +4,7 @@
       "body": "",
       "headers": {
         "Accept-Version": "v1",
-        "Authorization": "Client-ID client_id",
+        "Authorization": "***",
         "Content-type": "application/json; charset=utf-8"
       },
       "method": "get",
@@ -13,32 +13,32 @@
       "url": "https://api.unsplash.com/users/believenyaself/portfolio"
     },
     "response": {
+      "binary": false,
       "body": "{\"url\":\"https://www.tumblr.com/blog/believenyaself\"}",
       "headers": {
         "Server": "Cowboy",
+        "Cache-Control": "no-cache, no-store, must-revalidate",
         "Access-Control-Allow-Origin": "*",
         "Access-Control-Request-Method": "*",
         "Access-Control-Allow-Headers": "*",
         "Access-Control-Expose-Headers": "Link,X-Total,X-Per-Page,X-RateLimit-Limit,X-RateLimit-Remaining",
-        "Cache-Control": "no-cache, no-store, must-revalidate",
         "Content-Type": "application/json",
         "X-Ratelimit-Limit": "50",
-        "X-Ratelimit-Remaining": "30",
-        "X-Request-Id": "b63bd818-c30f-4f2d-84db-80051c02891f",
-        "X-Runtime": "0.023305",
-        "Strict-Transport-Security": "max-age=31536000",
+        "X-Ratelimit-Remaining": "18",
+        "X-Request-Id": "013f55d1-5eac-4f5b-b497-44e2e7015ba5",
+        "X-Runtime": "0.024393",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
         "Via": "1.1 vegur",
-        "Fastly-Debug-Digest": "2c2da5a00338e9c244af8b482f7b275b2db31606f688ad5bb225aa35cf96dd23",
         "Content-Length": "52",
         "Accept-Ranges": "bytes",
-        "Date": "Mon, 12 Jun 2017 21:20:08 GMT",
+        "Date": "Wed, 10 Apr 2019 02:55:17 GMT",
         "Age": "0",
         "Connection": "keep-alive",
-        "X-Served-By": "cache-iad2137-IAD, cache-sea1025-SEA",
+        "X-Served-By": "cache-iad2130-IAD, cache-pao17420-PAO",
         "X-Cache": "MISS, MISS",
         "X-Cache-Hits": "0, 0",
-        "X-Timer": "S1497302408.178209,VS0,VE101",
-        "Vary": "Origin"
+        "X-Timer": "S1554864917.006451,VS0,VE96",
+        "Vary": "Origin, Authorization"
       },
       "status_code": 200,
       "type": "ok"

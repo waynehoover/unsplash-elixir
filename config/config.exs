@@ -7,3 +7,7 @@ use Mix.Config
 if !System.get_env("TRAVIS") do
   import_config "secrets.exs"
 end
+
+config :exvcr, [
+  filter_request_headers: ["Authorization"]
+]
