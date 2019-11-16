@@ -19,19 +19,6 @@ defmodule Unsplash.Photos do
   end
 
   @doc ~S"""
-    GET /photos/curated
-
-  Args:
-    * `opts` - Keyword list of options
-
-  Options:
-    * `order_by` -  How to sort the photos. Optional. (Valid values: latest, oldest, popular; default: latest)
-  """
-  def curated(opts \\ []) do
-    ResultStream.new("/photos/curated", opts)
-  end
-
-  @doc ~S"""
   GET /photos/:id
 
   Returns instances of dynamically resizable image URLs.

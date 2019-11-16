@@ -20,13 +20,6 @@ defmodule Unsplash.Collections do
   end
 
   @doc ~S"""
-    GET /collections/curated
-  """
-  def curated(opts \\ []) do
-    ResultStream.new("/collections/curated", opts)
-  end
-
-  @doc ~S"""
   GET /collections/:id
 
   Args:
@@ -34,16 +27,6 @@ defmodule Unsplash.Collections do
   """
   def get(id) do
     ResultStream.new("/collections/#{id}")
-  end
-
-  @doc ~S"""
-  GET /collections/curated/:id
-
-  Args:
-    * `id` - The collections ID
-  """
-  def get_curated(id) do
-    ResultStream.new("/collections/curated/#{id}")
   end
 
   @doc ~S"""
@@ -64,16 +47,6 @@ defmodule Unsplash.Collections do
   """
   def photos(id) do
     ResultStream.new("/collections/#{id}/photos")
-  end
-
-  @doc ~S"""
-  GET /collections/curated/:id/photos
-
-  Args:
-    * `id` - The collections ID
-  """
-  def curated_photos(id) do
-    ResultStream.new("/collections/curated/#{id}/photos")
   end
 
   @doc ~S"""

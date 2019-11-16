@@ -18,25 +18,9 @@ defmodule Unsplash.CollectionsTest do
     end
   end
 
-  test "Unsplash.curated_collections" do
-    use_cassette "collections_curated" do
-      response = Unsplash.Collections.curated() |> Enum.at(0)
-      assert response
-      refute response |> Enum.into(%{}) |> Map.get("errors")
-    end
-  end
-
   test "Unsplash.Collections.get(id)" do
     use_cassette "collections_id" do
       response = Unsplash.Collections.get("175361") |> Enum.to_list()
-      assert response
-      refute response |> Enum.into(%{}) |> Map.get("errors")
-    end
-  end
-
-  test "Unsplash.Collections.get_curated(id)" do
-    use_cassette "collections_get_curated_id" do
-      response = Unsplash.Collections.get_curated("145") |> Enum.to_list()
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end
@@ -53,14 +37,6 @@ defmodule Unsplash.CollectionsTest do
   test "Unsplash.Collections.photos(id)" do
     use_cassette "collections_photos_id" do
       response = Unsplash.Collections.photos("175361") |> Enum.at(0)
-      assert response
-      refute response |> Enum.into(%{}) |> Map.get("errors")
-    end
-  end
-
-  test "Unsplash.Collections.curated_photos(id)" do
-    use_cassette "collections_curated_photos_id" do
-      response = Unsplash.Collections.curated_photos("145") |> Enum.at(0)
       assert response
       refute response |> Enum.into(%{}) |> Map.get("errors")
     end

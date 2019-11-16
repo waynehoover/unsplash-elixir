@@ -10,14 +10,6 @@ defmodule Unsplash.PhotosTest do
     end
   end
 
-  test "Unsplash.Photos.curated" do
-    use_cassette "photos_curated" do
-      response = Unsplash.Photos.curated() |> Enum.at(0)
-      assert response
-      refute response |> Enum.into(%{}) |> Map.get("errors")
-    end
-  end
-
   test "Unsplash.Photos.random(opts)" do
     use_cassette "photos_random" do
       response = Unsplash.Photos.random(query: "nature") |> Enum.to_list()
